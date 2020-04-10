@@ -1,12 +1,10 @@
 package com.example.gameofthrones.presentation
 
-import android.app.Activity
-import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.widget.FrameLayout
 import androidx.fragment.app.Fragment
 import com.example.gameofthrones.R
+import com.example.gameofthrones.presentation.fragment.BaseFragment
 import com.example.gameofthrones.presentation.fragment.GameFragment
 import com.example.gameofthrones.presentation.fragment.ProfileFragment
 import com.google.android.material.bottomnavigation.BottomNavigationView
@@ -21,6 +19,11 @@ class MainActivity : AppCompatActivity() {
         val onNavigationItemSelectedListener =
             BottomNavigationView.OnNavigationItemSelectedListener {item ->
                 when (item.itemId) {
+                    R.id.base -> {
+                        val baseFragment = BaseFragment.newInstance()
+                        openFragment(baseFragment)
+                        true
+                    }
                     R.id.game -> {
                         val gameFragment = GameFragment.newInstance()
                         openFragment(gameFragment)
