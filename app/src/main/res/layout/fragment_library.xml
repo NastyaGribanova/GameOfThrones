@@ -47,7 +47,7 @@
             android:backgroundTint="#00FFFFFF"
             android:scaleType="center"
             app:layout_flexBasisPercent="@fraction/icon"
-            app:srcCompat="@drawable/ic_image_10_04_20_08_25" />
+            app:srcCompat="@drawable/ic_character" />
     </androidx.cardview.widget.CardView>
 
     <View
@@ -72,7 +72,7 @@
             android:backgroundTint="#00FFFFFF"
             android:scaleType="center"
             app:layout_flexBasisPercent="@fraction/icon"
-            app:srcCompat="@drawable/ic_image_11_04_20_12_52" />
+            app:srcCompat="@drawable/ic_castle" />
     </androidx.cardview.widget.CardView>
 
 </androidx.appcompat.widget.LinearLayoutCompat>
