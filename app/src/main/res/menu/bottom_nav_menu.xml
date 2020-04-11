@@ -12,6 +12,11 @@
         android:title="Game" />
 
     <item
+        android:id="@+id/library"
+        android:backgroundTint="#7BFBF9F9"
+        android:title="Library" />
+
+    <item
         android:id="@+id/profile"
         android:backgroundTint="#7FFBF9F9"
         android:title="Profile" />

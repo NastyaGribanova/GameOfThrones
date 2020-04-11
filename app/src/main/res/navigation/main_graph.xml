@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main_graph"
+    app:startDestination="@id/baseFragment">
+
+    <fragment
+        android:id="@+id/baseFragment"
+        android:name="com.example.gameofthrones.presentation.fragment.BaseFragment"
+        android:label="BaseFragment" />
+    <fragment
+        android:id="@+id/gameFragment"
+        android:name="com.example.gameofthrones.presentation.fragment.GameFragment"
+        android:label="GameFragment" />
+    <fragment
+        android:id="@+id/libraryFragment"
+        android:name="com.example.gameofthrones.presentation.fragment.LibraryFragment"
+        android:label="LibraryFragment" >
+        <action
+            android:id="@+id/action_libraryFragment_to_booksFragment"
+            app:destination="@id/booksFragment" />
+        <action
+            android:id="@+id/action_libraryFragment_to_charactersFragment"
+            app:destination="@id/charactersFragment" />
+        <action
+            android:id="@+id/action_libraryFragment_to_housesFragment"
+            app:destination="@id/housesFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/profileFragment"
+        android:name="com.example.gameofthrones.presentation.fragment.ProfileFragment"
+        android:label="ProfileFragment" />
+    <fragment
+        android:id="@+id/booksFragment"
+        android:name="com.example.gameofthrones.presentation.recyclers.BooksFragment"
+        android:label="BooksFragment" >
+        <action
+            android:id="@+id/action_booksFragment_to_bookFragment"
+            app:destination="@id/bookFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/charactersFragment"
+        android:name="com.example.gameofthrones.presentation.CharactersFragment"
+        android:label="fragment_characters"
+        tools:layout="@layout/fragment_characters" />
+    <fragment
+        android:id="@+id/housesFragment"
+        android:name="com.example.gameofthrones.presentation.HousesFragment"
+        android:label="fragment_houses"
+        tools:layout="@layout/fragment_houses" />
+    <fragment
+        android:id="@+id/bookFragment"
+        android:name="com.example.gameofthrones.presentation.fragment.BookFragment"
+        android:label="BookFragment" />
+</navigation>

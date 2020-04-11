@@ -2,36 +2,44 @@ package com.example.gameofthrones.presentation
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.View
 import androidx.fragment.app.Fragment
+import androidx.navigation.NavController
+import androidx.navigation.Navigation
 import com.example.gameofthrones.R
 import com.example.gameofthrones.presentation.fragment.BaseFragment
 import com.example.gameofthrones.presentation.fragment.GameFragment
+import com.example.gameofthrones.presentation.fragment.LibraryFragment
 import com.example.gameofthrones.presentation.fragment.ProfileFragment
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity() {
 
+    lateinit var navController: NavController
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+        navController = Navigation.findNavController(this, R.id.nav_host_fragment)
 
         val onNavigationItemSelectedListener =
             BottomNavigationView.OnNavigationItemSelectedListener {item ->
                 when (item.itemId) {
                     R.id.base -> {
-                        val baseFragment = BaseFragment.newInstance()
-                        openFragment(baseFragment)
-                        true
+                        navController.navigate(R.id.baseFragment)
+                       true
                     }
                     R.id.game -> {
-                        val gameFragment = GameFragment.newInstance()
-                        openFragment(gameFragment)
+                        navController.navigate(R.id.gameFragment)
+                        true
+                    }
+                    R.id.library -> {
+                        navController.navigate(R.id.libraryFragment)
                         true
                     }
                     R.id.profile -> {
-                        val profileFragment = ProfileFragment.newInstance()
-                        openFragment(profileFragment)
+                        navController.navigate(R.id.profileFragment)
                         true
                     }
                     else -> false
@@ -40,11 +48,16 @@ class MainActivity : AppCompatActivity() {
         btv_main.setOnNavigationItemSelectedListener(onNavigationItemSelectedListener)
     }
 
-    private fun openFragment(fragment: Fragment){
-        val transaction = supportFragmentManager.beginTransaction().apply { }
-        transaction.replace(R.id.container_main, fragment)
-        transaction.addToBackStack(null)
-        transaction.commit()
+
+    fun onBook(view: View) {
+        navController.navigate(R.id.booksFragment)
     }
 
+    fun onCharacter(view: View) {
+        navController.navigate(R.id.action_libraryFragment_to_charactersFragment)
+    }
+
+    fun onHouse(view: View) {
+        navController.navigate(R.id.action_libraryFragment_to_housesFragment)
+    }
 }
