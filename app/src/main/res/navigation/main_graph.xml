@@ -11,7 +11,7 @@
         android:label="BaseFragment" />
     <fragment
         android:id="@+id/gameFragment"
-        android:name="com.example.gameofthrones.presentation.fragment.GameFragment"
+        android:name="com.example.gameofthrones.presentation.fragment.QuizFragment"
         android:label="GameFragment" />
     <fragment
         android:id="@+id/libraryFragment"
