@@ -1,7 +1,7 @@
-package com.example.gameofthrones.data.mappers
+package com.example.gameofthrones.data.mapper
 
 import com.example.gameofthrones.data.api.models.HouseApi
-import com.example.gameofthrones.domain.models.House
+import com.example.gameofthrones.domain.model.House
 
 class HouseMapper {
     fun map(house: HouseApi): House{

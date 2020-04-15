@@ -1,4 +1,4 @@
-package com.example.gameofthrones.presentation.recyclers
+package com.example.gameofthrones.presentation.recycler
 
 import android.os.Bundle
 import android.view.*

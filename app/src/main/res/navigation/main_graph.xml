@@ -33,7 +33,7 @@
         android:label="ProfileFragment" />
     <fragment
         android:id="@+id/booksFragment"
-        android:name="com.example.gameofthrones.presentation.recyclers.BooksFragment"
+        android:name="com.example.gameofthrones.presentation.recycler.BooksFragment"
         android:label="BooksFragment" >
         <action
             android:id="@+id/action_booksFragment_to_bookFragment"

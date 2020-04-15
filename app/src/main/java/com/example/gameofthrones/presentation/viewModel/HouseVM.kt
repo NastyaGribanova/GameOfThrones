@@ -4,7 +4,7 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.example.gameofthrones.domain.interfaces.HouseRepository
-import com.example.gameofthrones.domain.models.House
+import com.example.gameofthrones.domain.model.House
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.schedulers.Schedulers
 

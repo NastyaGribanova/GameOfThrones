@@ -1,9 +1,9 @@
 package com.example.gameofthrones.data.repository
 
 import com.example.gameofthrones.data.api.BookApiService
-import com.example.gameofthrones.data.mappers.BookMapper
+import com.example.gameofthrones.data.mapper.BookMapper
 import com.example.gameofthrones.domain.interfaces.BookRepository
-import com.example.gameofthrones.domain.models.Book
+import com.example.gameofthrones.domain.model.Book
 import io.reactivex.Single
 
 class BookRepositoryImpl(

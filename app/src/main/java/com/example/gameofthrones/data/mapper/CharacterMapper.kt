@@ -1,7 +1,7 @@
-package com.example.gameofthrones.data.mappers
+package com.example.gameofthrones.data.mapper
 
 import com.example.gameofthrones.data.api.models.CharacterApi
-import com.example.gameofthrones.domain.models.Character
+import com.example.gameofthrones.domain.model.Character
 
 class CharacterMapper {
     fun map(character: CharacterApi): Character{

@@ -1,9 +1,9 @@
 package com.example.gameofthrones.data.repository
 
 import com.example.gameofthrones.data.api.HouseApiService
-import com.example.gameofthrones.data.mappers.HouseMapper
+import com.example.gameofthrones.data.mapper.HouseMapper
 import com.example.gameofthrones.domain.interfaces.HouseRepository
-import com.example.gameofthrones.domain.models.House
+import com.example.gameofthrones.domain.model.House
 import io.reactivex.Single
 
 class HouseRepositoryImpl(

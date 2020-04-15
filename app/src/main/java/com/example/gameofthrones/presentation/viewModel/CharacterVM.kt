@@ -6,7 +6,7 @@ import androidx.lifecycle.ViewModel
 import com.example.gameofthrones.domain.interfaces.CharacterRepository
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.schedulers.Schedulers
-import com.example.gameofthrones.domain.models.Character
+import com.example.gameofthrones.domain.model.Character
 
 class CharacterVM (
     private val characterRepository: CharacterRepository

@@ -1,4 +1,4 @@
-package com.example.gameofthrones.domain.models
+package com.example.gameofthrones.domain.model
 
 data class Book(
     val authors: List<String>,
