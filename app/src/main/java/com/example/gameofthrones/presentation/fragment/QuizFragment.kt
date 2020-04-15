@@ -10,6 +10,7 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import com.example.gameofthrones.R
 import com.example.gameofthrones.domain.Quiz
+import com.example.gameofthrones.presentation.viewModel.CharacterVM
 import com.example.gameofthrones.presentation.viewModel.QuizVM
 import kotlinx.android.synthetic.main.fragment_quiz.*
 
@@ -17,7 +18,7 @@ import kotlinx.android.synthetic.main.fragment_quiz.*
 class QuizFragment: Fragment() {
 
     private val answered: Boolean = false
-    private val model = QuizVM()
+    private val model = CharacterVM()
     private val quiz = Quiz()
 
     override fun onCreateView(
@@ -29,7 +30,7 @@ class QuizFragment: Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        quiz.getRandomCharacter(tv_name_char)
+        quiz.getRandomCharacter(tv_name_char.toString())
         var rbSelected: Int = radio_group.checkedRadioButtonId
 
         btn_next.setOnClickListener {
@@ -37,7 +38,10 @@ class QuizFragment: Fragment() {
                 if (rb_yes.isChecked || rb_no.isChecked) {
                     model.character(tv_name_char.toString())
                     model.characterLD.observe(this, Observer {
-                        quiz.checkAnswer(it, rbSelected)
+                        if (quiz.checkAnswer(it, rbSelected))
+                        {
+
+                        }
                     })
 
                 } else {

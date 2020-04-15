@@ -2,11 +2,11 @@ package com.example.gameofthrones.presentation.recyclers
 
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import com.example.gameofthrones.data.api.ApiBooksItem
+import com.example.gameofthrones.data.api.BookApi
 
 class BooksAdapter (
-    var bookList: List<ApiBooksItem>,
-    private val clickLambda: (ApiBooksItem) -> Unit
+    var bookList: List<BookApi>,
+    private val clickLambda: (BookApi) -> Unit
 ) : RecyclerView.Adapter<BooksHolder>()  {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): BooksHolder =

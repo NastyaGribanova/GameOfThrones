@@ -7,8 +7,6 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
-import androidx.navigation.NavController
-import androidx.navigation.Navigation
 import com.example.gameofthrones.R
 import com.example.gameofthrones.presentation.viewModel.BookVM
 import kotlinx.android.synthetic.main.fragment_book.*
@@ -27,7 +25,7 @@ class BookFragment: Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        val name : String? = arguments?.getString("name")
+        val name : String = arguments?.getString("name").toString()
         model.book(name)
         model.bookLD.observe(this, Observer{
             Log.e("ERROR", it.toString())

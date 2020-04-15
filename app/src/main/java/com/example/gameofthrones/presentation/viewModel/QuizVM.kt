@@ -4,17 +4,17 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.example.gameofthrones.data.api.ApiFactory
-import com.example.gameofthrones.data.api.ApiItem
-import com.example.gameofthrones.data.api.ApiService
+import com.example.gameofthrones.data.api.CharacterApiService
+import com.example.gameofthrones.data.api.models.CharacterApi
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.schedulers.Schedulers
 
 class QuizVM : ViewModel() {
 
-    private var service: ApiService = ApiFactory.apiService
+    private var service: CharacterApiService = ApiFactory.characterApiService
 
-    val character: MutableLiveData<ApiItem> by lazy { MutableLiveData<ApiItem>() }
-    val characterLD: LiveData<ApiItem> = character
+    private val character: MutableLiveData<CharacterApi> by lazy { MutableLiveData<CharacterApi>() }
+    val characterLD: LiveData<CharacterApi> = character
 
     fun character(name: String?) {
         var result = service.characterByName(name)

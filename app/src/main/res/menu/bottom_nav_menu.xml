@@ -7,9 +7,9 @@
         android:title="Base" />
 
     <item
-        android:id="@+id/game"
+        android:id="@+id/quiz"
         android:backgroundTint="#7BFBF9F9"
-        android:title="Game" />
+        android:title="Quiz" />
 
     <item
         android:id="@+id/library"

@@ -1,9 +1,8 @@
-package com.example.gameofthrones.data.api
+package com.example.gameofthrones.data.api.models
+
 import com.google.gson.annotations.SerializedName
 
-class Api : ArrayList<ApiItem>()
-
-data class ApiItem(
+data class CharacterApi(
     @SerializedName("aliases")
     var aliases: List<String>,
     @SerializedName("allegiances")

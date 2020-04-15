@@ -25,8 +25,8 @@ class MainActivity : AppCompatActivity() {
                         navController.navigate(R.id.baseFragment)
                        true
                     }
-                    R.id.game -> {
-                        navController.navigate(R.id.gameFragment)
+                    R.id.quiz -> {
+                        navController.navigate(R.id.quizFragment)
                         true
                     }
                     R.id.library -> {

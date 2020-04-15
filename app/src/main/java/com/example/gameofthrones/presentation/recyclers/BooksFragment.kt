@@ -3,20 +3,15 @@ package com.example.gameofthrones.presentation.recyclers
 import android.os.Bundle
 import android.view.*
 import android.widget.SearchView
-import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
-import androidx.navigation.NavController
 import androidx.navigation.Navigation
 import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.RecyclerView
 import com.example.gameofthrones.R
-import com.example.gameofthrones.data.api.ApiBooksItem
-import com.example.gameofthrones.presentation.MainActivity
+import com.example.gameofthrones.data.api.BookApi
 import com.example.gameofthrones.presentation.viewModel.BookVM
-import com.google.android.material.snackbar.Snackbar
 import kotlinx.android.synthetic.main.fragment_books.*
-import java.io.IOException
 
 class BooksFragment: Fragment() {
 
@@ -35,7 +30,7 @@ class BooksFragment: Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        val list: ArrayList<ApiBooksItem> = ArrayList()
+        val list: ArrayList<BookApi> = ArrayList()
         adapter = BooksAdapter(list){book ->
             bundle.putString("name", book.name)
             Navigation.findNavController(view).navigate(R.id.action_libraryFragment_to_booksFragment, bundle)

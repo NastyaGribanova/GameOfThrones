@@ -1,16 +1,17 @@
 package com.example.gameofthrones.domain
 
-import android.widget.TextView
-import com.example.gameofthrones.data.api.ApiItem
-import com.example.gameofthrones.presentation.viewModel.QuizVM
+import com.example.gameofthrones.data.api.models.CharacterApi
 
 class Quiz {
 
-    fun checkAnswer(character: ApiItem, id: Int){
-
+    fun checkAnswer(character: CharacterApi, id: Int) : Boolean{
+        return if (character.died == "")
+            id != 0
+        else
+            id == 0
     }
 
-    fun getRandomCharacter(tv: TextView){
+    fun getRandomCharacter(tv: String){
 
     }
 

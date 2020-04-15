@@ -10,13 +10,24 @@ object ApiFactory {
     private val retrofit: Retrofit by lazy {
         Retrofit.Builder()
             .baseUrl(BuildConfig.API_ENDPOINT)
+            .client()
             .addConverterFactory(GsonConverterFactory.create())
             .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
             .build()
     }
 
-    val apiService: ApiService by lazy {
+    val characterApiService: CharacterApiService by lazy {
         retrofit.create(
-            ApiService::class.java)
+            CharacterApiService::class.java)
+    }
+
+    val bookApiService: BookApiService by lazy {
+        retrofit.create(
+            BookApiService::class.java)
+    }
+
+    val houseApiService: HouseApiService by lazy {
+        retrofit.create(
+            HouseApiService::class.java)
     }
 }

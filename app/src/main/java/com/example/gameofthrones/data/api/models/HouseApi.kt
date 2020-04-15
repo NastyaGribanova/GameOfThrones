@@ -1,9 +1,8 @@
-package com.example.gameofthrones.data.api
+package com.example.gameofthrones.data.api.models
+
 import com.google.gson.annotations.SerializedName
 
-class ApiHouses : ArrayList<ApiHousesItem>()
-
-data class ApiHousesItem(
+data class HouseApi(
     @SerializedName("ancestralWeapons")
     var ancestralWeapons: List<String>,
     @SerializedName("cadetBranches")
