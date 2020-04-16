@@ -4,21 +4,19 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.RadioButton
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import com.example.gameofthrones.R
 import com.example.gameofthrones.domain.Quiz
-import com.example.gameofthrones.presentation.viewModel.CharacterVM
-import com.example.gameofthrones.presentation.viewModel.QuizVM
+import com.example.gameofthrones.presentation.viewModel.AllCharactersVM
 import kotlinx.android.synthetic.main.fragment_quiz.*
 
 
 class QuizFragment: Fragment() {
 
     private val answered: Boolean = false
-    private val model = CharacterVM()
+    private val model = AllCharactersVM()
     private val quiz = Quiz()
 
     override fun onCreateView(

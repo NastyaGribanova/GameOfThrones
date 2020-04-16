@@ -1,4 +1,4 @@
-package com.example.gameofthrones.presentation.recycler
+package com.example.gameofthrones.presentation.recycler.book
 
 import android.view.LayoutInflater
 import android.view.View

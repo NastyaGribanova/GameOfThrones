@@ -1,4 +1,4 @@
-package com.example.gameofthrones.presentation.recycler
+package com.example.gameofthrones.presentation.recycler.book
 
 import android.os.Bundle
 import android.view.*
@@ -10,12 +10,14 @@ import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.RecyclerView
 import com.example.gameofthrones.R
 import com.example.gameofthrones.data.api.BookApi
-import com.example.gameofthrones.presentation.viewModel.BookVM
+import com.example.gameofthrones.presentation.viewModel.AllBooksVM
+import com.google.android.material.snackbar.Snackbar
 import kotlinx.android.synthetic.main.fragment_books.*
+import java.io.IOException
 
 class BooksFragment: Fragment() {
 
-    private val model = BookVM()
+    private val model = AllBooksVM()
     private var adapter: BooksAdapter? = null
     val bundle = Bundle()
 
@@ -31,10 +33,14 @@ class BooksFragment: Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         val list: ArrayList<BookApi> = ArrayList()
-        adapter = BooksAdapter(list){book ->
-            bundle.putString("name", book.name)
-            Navigation.findNavController(view).navigate(R.id.action_libraryFragment_to_booksFragment, bundle)
-        }
+        adapter =
+            BooksAdapter(
+                list
+            ) { book ->
+                bundle.putString("name", book.name)
+                Navigation.findNavController(view)
+                    .navigate(R.id.action_libraryFragment_to_booksFragment, bundle)
+            }
         rv_books.adapter = adapter
 
         setRecyclerViewItemTouchListener()
@@ -58,10 +64,10 @@ class BooksFragment: Fragment() {
         val itemTouchHelper = ItemTouchHelper(itemTouchCallback)
         rv_books.addItemDecoration(itemTouchHelper)
         itemTouchHelper.attachToRecyclerView(rv_books)
-        getCountries()
+        getBooks()
     }
 
-    fun getCountries() {
+    fun getBooks() {
         model.allBooks()
         model.booksLD.observe(viewLifecycleOwner, Observer{
             adapter?.bookList = it
@@ -86,7 +92,25 @@ class BooksFragment: Fragment() {
         super.onCreateOptionsMenu(menu, inflater)
     }
 
+    fun queryTextSubmit(query: String): Boolean {
+        model.search(query)
+        model.countryLD.observe(this, Observer{
+            try {
+                bundle.putString("name", it.name)
+                Navigation.findNavController(view).navigate(R.id.action_libraryFragment_to_booksFragment, bundle)
+            } catch (e: IOException) {
+                Snackbar.make(
+                    requireView().findViewById(android.R.id.content),
+                    "Book wasn't found",
+                    Snackbar.LENGTH_LONG
+                ).show()
+            }
+        })
+        return false;
+    }
+
     companion object {
-        fun newInstance() = BooksFragment()
+        fun newInstance() =
+            BooksFragment()
     }
 }
