@@ -10,6 +10,13 @@ import dagger.Component
 @Component(modules = [ApiFactoryModule::class])
 interface AppComponent {
 
+    fun allBooksComponent(): AllBooksComponent.Builder
+    fun bookComponent(): BookComponent.Builder
+    fun allCharactersComponent(): AllCharactersComponent.Builder
+    fun characterComponent(): CharacterComponent.Builder
+    fun allHousesComponent(): AllHousesComponent.Builder
+    fun houseComponent(): HouseComponent.Builder
+
     @Component.Builder
     interface Builder {
 

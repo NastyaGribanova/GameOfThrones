@@ -41,12 +41,12 @@
     </fragment>
     <fragment
         android:id="@+id/charactersFragment"
-        android:name="com.example.gameofthrones.presentation.CharactersFragment"
+        android:name="com.example.gameofthrones.presentation.recycler.character.CharactersFragment"
         android:label="fragment_characters"
         tools:layout="@layout/fragment_characters" />
     <fragment
         android:id="@+id/housesFragment"
-        android:name="com.example.gameofthrones.presentation.HousesFragment"
+        android:name="com.example.gameofthrones.presentation.recycler.house.HousesFragment"
         android:label="fragment_houses"
         tools:layout="@layout/fragment_houses" />
     <fragment

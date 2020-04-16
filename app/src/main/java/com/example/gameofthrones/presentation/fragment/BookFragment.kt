@@ -7,18 +7,26 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
+import androidx.lifecycle.ViewModelProvider
 import com.example.gameofthrones.R
+import com.example.gameofthrones.di.AppInjector
 import com.example.gameofthrones.presentation.viewModel.BookVM
 import kotlinx.android.synthetic.main.fragment_book.*
+import javax.inject.Inject
 
 class BookFragment: Fragment() {
 
-    private val model = BookVM()
+    @Inject
+    lateinit var viewModelFactory: ViewModelProvider.Factory
+
+    private var model: BookVM? = null
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
+        AppInjector.plusBookComponent().inject(this)
+        initViewModel()
         return inflater.inflate(R.layout.fragment_book, container, false)
     }
 
@@ -26,12 +34,28 @@ class BookFragment: Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         val name : String = arguments?.getString("name").toString()
-        model.book(name)
-        model.bookLD.observe(this, Observer{
+        model?.book(name)
+        model?.bookLD?.observe(this, Observer{
             Log.e("ERROR", it.toString())
             tv_name_book.text = it.name
             tv_number_pages.text = "Number of pages: " + it.numberOfPages.toString()
             tv_publisher.text = "Publisher: " + it.publisher.toString()
         })
     }
+
+    fun initViewModel(){
+        val viewModel by lazy {
+            ViewModelProvider(
+                this,
+                viewModelFactory
+            ).get(BookVM::class.java)
+        }
+        this.model = viewModel
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        AppInjector.clearBookComponent()
+    }
+
 }

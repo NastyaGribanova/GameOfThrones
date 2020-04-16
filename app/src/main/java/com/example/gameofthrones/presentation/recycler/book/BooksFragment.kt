@@ -5,19 +5,25 @@ import android.view.*
 import android.widget.SearchView
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
+import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.Navigation
 import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.RecyclerView
 import com.example.gameofthrones.R
-import com.example.gameofthrones.data.api.BookApi
+import com.example.gameofthrones.di.AppInjector
+import com.example.gameofthrones.domain.model.Book
 import com.example.gameofthrones.presentation.viewModel.AllBooksVM
 import com.google.android.material.snackbar.Snackbar
 import kotlinx.android.synthetic.main.fragment_books.*
 import java.io.IOException
+import javax.inject.Inject
 
 class BooksFragment: Fragment() {
 
-    private val model = AllBooksVM()
+    @Inject
+    lateinit var viewModelFactory: ViewModelProvider.Factory
+
+    private var model: AllBooksVM? = null
     private var adapter: BooksAdapter? = null
     val bundle = Bundle()
 
@@ -25,6 +31,8 @@ class BooksFragment: Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
+        AppInjector.plusAllBooksComponent().inject(this)
+        initViewModel()
         setHasOptionsMenu(true)
         return inflater.inflate(R.layout.fragment_books, container, false)
     }
@@ -32,7 +40,7 @@ class BooksFragment: Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        val list: ArrayList<BookApi> = ArrayList()
+        val list: ArrayList<Book> = ArrayList()
         adapter =
             BooksAdapter(
                 list
@@ -68,8 +76,8 @@ class BooksFragment: Fragment() {
     }
 
     fun getBooks() {
-        model.allBooks()
-        model.booksLD.observe(viewLifecycleOwner, Observer{
+        model?.allBooks()
+        model?.booksLD?.observe(viewLifecycleOwner, Observer{
             adapter?.bookList = it
         })
 
@@ -93,11 +101,11 @@ class BooksFragment: Fragment() {
     }
 
     fun queryTextSubmit(query: String): Boolean {
-        model.search(query)
-        model.countryLD.observe(this, Observer{
+        model?.book(query)
+        model?.bookLD?.observe(this, Observer{
             try {
                 bundle.putString("name", it.name)
-                Navigation.findNavController(view).navigate(R.id.action_libraryFragment_to_booksFragment, bundle)
+                Navigation.findNavController(view!!).navigate(R.id.action_libraryFragment_to_booksFragment, bundle)
             } catch (e: IOException) {
                 Snackbar.make(
                     requireView().findViewById(android.R.id.content),
@@ -107,6 +115,21 @@ class BooksFragment: Fragment() {
             }
         })
         return false;
+    }
+
+    fun initViewModel(){
+        val viewModel by lazy {
+            ViewModelProvider(
+                this,
+                viewModelFactory
+            ).get(AllBooksVM::class.java)
+        }
+        this.model = viewModel
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        AppInjector.clearAllBooksComponent()
     }
 
     companion object {

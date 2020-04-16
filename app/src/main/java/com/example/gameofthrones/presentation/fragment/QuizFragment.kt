@@ -16,7 +16,7 @@ import kotlinx.android.synthetic.main.fragment_quiz.*
 class QuizFragment: Fragment() {
 
     private val answered: Boolean = false
-    private val model = AllCharactersVM()
+    //private val model = AllCharactersVM()
     private val quiz = Quiz()
 
     override fun onCreateView(
@@ -32,25 +32,25 @@ class QuizFragment: Fragment() {
         var rbSelected: Int = radio_group.checkedRadioButtonId
 
         btn_next.setOnClickListener {
-            if (!answered) {
-                if (rb_yes.isChecked || rb_no.isChecked) {
-                    model.character(tv_name_char.toString())
-                    model.characterLD.observe(this, Observer {
-                        if (quiz.checkAnswer(it, rbSelected))
-                        {
-
-                        }
-                    })
-
-                } else {
-                    Toast.makeText(activity,
-                        "Please select an answer",
-                        Toast.LENGTH_SHORT
-                    ).show()
-                }
-            } else {
-                quiz.showNextCharacter()
-            }
+//            if (!answered) {
+//                if (rb_yes.isChecked || rb_no.isChecked) {
+//                    model.character(tv_name_char.toString())
+//                    model.characterLD.observe(this, Observer {
+//                        if (quiz.checkAnswer(it, rbSelected))
+//                        {
+//
+//                        }
+//                    })
+//
+//                } else {
+//                    Toast.makeText(activity,
+//                        "Please select an answer",
+//                        Toast.LENGTH_SHORT
+//                    ).show()
+//                }
+//            } else {
+//                quiz.showNextCharacter()
+//            }
         }
 
     }

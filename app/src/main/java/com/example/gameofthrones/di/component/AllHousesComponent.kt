@@ -2,7 +2,7 @@ package com.example.gameofthrones.di.component
 
 import com.example.gameofthrones.di.module.ViewModelFactoryModule
 import com.example.gameofthrones.di.scope.AllHousesScope
-import com.example.gameofthrones.presentation.HousesFragment
+import com.example.gameofthrones.presentation.recycler.house.HousesFragment
 import com.example.gameofthrones.presentation.viewModel.AllHousesVM
 import dagger.Subcomponent
 
