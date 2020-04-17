@@ -4,6 +4,8 @@ apply plugin: 'kotlin-android'
 
 apply plugin: 'kotlin-android-extensions'
 
+apply plugin: 'kotlin-kapt'
+
 apply plugin: 'com.google.gms.google-services'
 
 android {
@@ -31,6 +33,9 @@ android {
     }
     androidExtensions {
         experimental = true
+    }
+    kapt {
+        generateStubs = true
     }
 }
 
@@ -68,4 +73,7 @@ dependencies {
     implementation "com.google.dagger:dagger-android-support:2.27"
     implementation "com.google.dagger:dagger:2.27"
     implementation "com.google.dagger:dagger-android:2.27"
+    kapt "com.google.dagger:dagger-android-processor:2.27"
+    kapt "com.google.dagger:dagger-compiler:2.27"
+    kapt "com.google.dagger:dagger-android-support:2.27"
 }

@@ -1,20 +1,20 @@
 package com.example.gameofthrones.data.repository
 
 import com.example.gameofthrones.data.api.CharacterApiService
-import com.example.gameofthrones.data.mapper.CharacterMapper
+import com.example.gameofthrones.data.mapper.mapCharacter
 import com.example.gameofthrones.domain.interfaces.AllCharactersRepository
 import com.example.gameofthrones.domain.model.Character
 import io.reactivex.Single
+import javax.inject.Inject
 
-class AllCharactersRepositoryImpl(
-    private val apiService: CharacterApiService,
-    private val characterMapper: CharacterMapper
+class AllCharactersRepositoryImpl @Inject constructor(
+    private val apiService: CharacterApiService
 ) : AllCharactersRepository {
     override fun getCharacters(): Single<List<Character>> {
         return apiService.getAllCharacters()
             .map {
                 it.map {
-                    characterMapper.map(it)
+                    mapCharacter(it)
                 }
             }
     }
@@ -22,7 +22,7 @@ class AllCharactersRepositoryImpl(
     override fun characterByName(name: String): Single<Character> {
         return apiService.characterByName(name)
             .map {
-                characterMapper.map(it)
+                mapCharacter(it)
             }
     }
 }

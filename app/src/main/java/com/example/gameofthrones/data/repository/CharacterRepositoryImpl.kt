@@ -1,20 +1,20 @@
 package com.example.gameofthrones.data.repository
 
 import com.example.gameofthrones.data.api.CharacterApiService
-import com.example.gameofthrones.data.mapper.CharacterMapper
+import com.example.gameofthrones.data.mapper.mapCharacter
 import com.example.gameofthrones.domain.interfaces.CharacterRepository
 import com.example.gameofthrones.domain.model.Character
 import io.reactivex.Single
+import javax.inject.Inject
 
-class CharacterRepositoryImpl(
-    private val apiService: CharacterApiService,
-    private val characterMapper: CharacterMapper
+class CharacterRepositoryImpl @Inject constructor(
+    private val apiService: CharacterApiService
 ) : CharacterRepository {
 
     override fun characterByName(name: String): Single<Character> {
         return apiService.characterByName(name)
             .map {
-                characterMapper.map(it)
+                mapCharacter(it)
             }
     }
 }

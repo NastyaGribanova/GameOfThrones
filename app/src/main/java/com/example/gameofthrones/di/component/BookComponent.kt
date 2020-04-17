@@ -1,5 +1,6 @@
 package com.example.gameofthrones.di.component
 
+import com.example.gameofthrones.di.module.BookModule
 import com.example.gameofthrones.di.module.ViewModelFactoryModule
 import com.example.gameofthrones.di.scope.BookScope
 import com.example.gameofthrones.presentation.fragment.BookFragment
@@ -7,7 +8,7 @@ import com.example.gameofthrones.presentation.viewModel.BookVM
 import dagger.Subcomponent
 
 @BookScope
-@Subcomponent(modules = [BookVM::class, ViewModelFactoryModule::class])
+@Subcomponent(modules = [BookModule::class, ViewModelFactoryModule::class])
 interface BookComponent {
 
     fun inject(bookFragment: BookFragment)
