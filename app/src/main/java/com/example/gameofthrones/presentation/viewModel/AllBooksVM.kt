@@ -18,6 +18,9 @@ class AllBooksVM(
     private val book: MutableLiveData<Book> by lazy { MutableLiveData<Book>() }
     val bookLD: LiveData<Book> = book
 
+    private val errorBook: MutableLiveData<String> by lazy { MutableLiveData<String>() }
+    val errorBookLD: LiveData<String> = errorBook
+
     fun allBooks() {
         var result = allBooksRepository.getBooks()
             .subscribeOn(Schedulers.io())
@@ -26,6 +29,7 @@ class AllBooksVM(
                 books.value = result
             }, {
                     error ->
+                errorBook.value = "no such book"
             })
     }
 
@@ -37,6 +41,7 @@ class AllBooksVM(
                 book.value = result
             }, {
                     error ->
+                errorBook.value = "no such book"
             })
     }
 }

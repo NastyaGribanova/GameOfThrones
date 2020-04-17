@@ -1,5 +1,6 @@
 package com.example.gameofthrones.presentation.fragment
 
+import android.content.Context
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
@@ -11,6 +12,7 @@ import androidx.lifecycle.ViewModelProvider
 import com.example.gameofthrones.R
 import com.example.gameofthrones.di.AppInjector
 import com.example.gameofthrones.presentation.viewModel.BookVM
+import com.google.android.material.snackbar.Snackbar
 import kotlinx.android.synthetic.main.fragment_book.*
 import javax.inject.Inject
 
@@ -25,9 +27,13 @@ class BookFragment: Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
+        return inflater.inflate(R.layout.fragment_book, container, false)
+    }
+
+    override fun onAttach(context: Context) {
+        super.onAttach(context)
         AppInjector.plusBookComponent().inject(this)
         initViewModel()
-        return inflater.inflate(R.layout.fragment_book, container, false)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -40,6 +46,13 @@ class BookFragment: Fragment() {
             tv_name_book.text = it.name
             tv_number_pages.text = "Number of pages: " + it.numberOfPages.toString()
             tv_publisher.text = "Publisher: " + it.publisher.toString()
+        })
+        model?.errorBookLD?.observe(viewLifecycleOwner, Observer{
+            Snackbar.make(
+                requireView().findViewById(android.R.id.content),
+                it,
+                Snackbar.LENGTH_LONG
+            ).show()
         })
     }
 

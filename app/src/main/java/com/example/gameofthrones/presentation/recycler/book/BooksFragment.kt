@@ -1,5 +1,6 @@
 package com.example.gameofthrones.presentation.recycler.book
 
+import android.content.Context
 import android.os.Bundle
 import android.view.*
 import android.widget.SearchView
@@ -31,10 +32,14 @@ class BooksFragment: Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        AppInjector.plusAllBooksComponent().inject(this)
-        initViewModel()
         setHasOptionsMenu(true)
         return inflater.inflate(R.layout.fragment_books, container, false)
+    }
+
+    override fun onAttach(context: Context) {
+        super.onAttach(context)
+        AppInjector.plusAllBooksComponent().inject(this)
+        initViewModel()
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -80,7 +85,13 @@ class BooksFragment: Fragment() {
         model?.booksLD?.observe(viewLifecycleOwner, Observer{
             adapter?.bookList = it
         })
-
+        model?.errorBookLD?.observe(viewLifecycleOwner, Observer{
+            Snackbar.make(
+                requireView().findViewById(android.R.id.content),
+                it,
+                Snackbar.LENGTH_LONG
+            ).show()
+        })
         adapter?.notifyDataSetChanged()
     }
 
@@ -113,6 +124,13 @@ class BooksFragment: Fragment() {
                     Snackbar.LENGTH_LONG
                 ).show()
             }
+        })
+        model?.errorBookLD?.observe(viewLifecycleOwner, Observer{
+            Snackbar.make(
+                requireView().findViewById(android.R.id.content),
+                it,
+                Snackbar.LENGTH_LONG
+            ).show()
         })
         return false;
     }

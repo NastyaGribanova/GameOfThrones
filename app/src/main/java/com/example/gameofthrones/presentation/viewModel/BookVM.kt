@@ -15,6 +15,9 @@ class BookVM(
     private val book: MutableLiveData<Book> by lazy { MutableLiveData<Book>() }
     val bookLD: LiveData<Book> = book
 
+    private val errorBook: MutableLiveData<String> by lazy { MutableLiveData<String>() }
+    val errorBookLD: LiveData<String> = errorBook
+
     fun book(name: String) {
         var result = bookRepository.bookByName(name)
             .subscribeOn(Schedulers.io())
@@ -23,6 +26,7 @@ class BookVM(
                 book.value = result
             }, {
                 error ->
+                errorBook.value = "no such book"
             })
     }
 

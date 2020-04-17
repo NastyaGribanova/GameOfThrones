@@ -1,5 +1,6 @@
 package com.example.gameofthrones.presentation.fragment
 
+import android.content.Context
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -22,9 +23,13 @@ class HouseFragment: Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
+        return inflater.inflate(R.layout.fragment_house, container, false)
+    }
+
+    override fun onAttach(context: Context) {
+        super.onAttach(context)
         AppInjector.plusHouseComponent().inject(this)
         initViewModel()
-        return inflater.inflate(R.layout.fragment_house, container, false)
     }
 
     fun initViewModel(){
