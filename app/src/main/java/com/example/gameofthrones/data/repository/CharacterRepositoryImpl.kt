@@ -8,7 +8,7 @@ import io.reactivex.Single
 import javax.inject.Inject
 
 class CharacterRepositoryImpl @Inject constructor(
-    private val apiService: CharacterApiService
+    private var apiService: CharacterApiService
 ) : CharacterRepository {
 
     override fun characterByName(name: String): Single<Character> {

@@ -8,9 +8,9 @@ import retrofit2.http.Path
 
 interface HouseApiService {
 
-    @GET("/houses")
+    @GET("/api/houses")
     fun getAllHouses(): Single<ApiHouses>
 
-    @GET("/houses?Name={name}")
+    @GET("/api/houses?Name={name}")
     fun houseByName(@Path("name") name: String?): Single<HouseApi>
 }

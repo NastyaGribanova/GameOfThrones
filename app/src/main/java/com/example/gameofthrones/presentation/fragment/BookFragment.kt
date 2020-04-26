@@ -44,8 +44,8 @@ class BookFragment: Fragment() {
         model?.bookLD?.observe(this, Observer{
             Log.e("ERROR", it.toString())
             tv_name_book.text = it.name
-            tv_number_pages.text = "Number of pages: " + it.numberOfPages.toString()
-            tv_publisher.text = "Publisher: " + it.publisher.toString()
+            tv_number_pages.text = it.numberOfPages.toString()
+            tv_publisher.text = it.publisher
         })
         model?.errorBookLD?.observe(viewLifecycleOwner, Observer{
             Snackbar.make(

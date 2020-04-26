@@ -13,17 +13,17 @@ class ApiFactoryModule {
 
     @ApplicationScope
     @Provides
-    fun provideApiFactory() = ApiFactory
+    fun provideApiFactory() = ApiFactory()
 
     @ApplicationScope
     @Provides
-    fun provideCharacterApiService(): CharacterApiService = ApiFactory.characterApiService
+    fun provideCharacterApiService(apiFactory: ApiFactory): CharacterApiService = apiFactory.characterApiService
 
     @ApplicationScope
     @Provides
-    fun provideHouseApiService(): HouseApiService = ApiFactory.houseApiService
+    fun provideHouseApiService(apiFactory: ApiFactory): HouseApiService = apiFactory.houseApiService
 
     @ApplicationScope
     @Provides
-    fun provideBookApiService(): BookApiService = ApiFactory.bookApiService
+    fun provideBookApiService(apiFactory: ApiFactory): BookApiService = apiFactory.bookApiService
 }

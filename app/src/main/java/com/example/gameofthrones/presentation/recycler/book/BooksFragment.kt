@@ -52,7 +52,7 @@ class BooksFragment: Fragment() {
             ) { book ->
                 bundle.putString("name", book.name)
                 Navigation.findNavController(view)
-                    .navigate(R.id.action_libraryFragment_to_booksFragment, bundle)
+                    .navigate(R.id.action_booksFragment_to_bookFragment, bundle)
             }
         rv_books.adapter = adapter
 
@@ -116,7 +116,7 @@ class BooksFragment: Fragment() {
         model?.bookLD?.observe(this, Observer{
             try {
                 bundle.putString("name", it.name)
-                Navigation.findNavController(view!!).navigate(R.id.action_libraryFragment_to_booksFragment, bundle)
+                view?.let { it1 -> Navigation.findNavController(it1).navigate(R.id.action_booksFragment_to_bookFragment, bundle) }
             } catch (e: IOException) {
                 Snackbar.make(
                     requireView().findViewById(android.R.id.content),

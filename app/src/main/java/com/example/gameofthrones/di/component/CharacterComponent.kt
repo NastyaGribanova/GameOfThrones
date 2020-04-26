@@ -8,7 +8,7 @@ import com.example.gameofthrones.presentation.viewModel.CharacterVM
 import dagger.Subcomponent
 
 @CharacterScope
-@Subcomponent(modules = [CharacterModule::class, ViewModelFactoryModule::class])
+@Subcomponent(modules = [CharacterModule::class])
 interface CharacterComponent {
 
     fun inject(characterFragment: CharacterFragment)

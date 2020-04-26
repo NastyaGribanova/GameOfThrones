@@ -8,9 +8,9 @@ import retrofit2.http.Path
 
 interface BookApiService {
 
-    @GET("/books")
+    @GET("/api/books")
     fun getAllBooks(): Single<ApiBooks>
 
-    @GET("/books?Name={name}")
+    @GET("/api/books?Name={name}")
     fun bookByName(@Path("name") name: String?): Single<BookApi>
 }

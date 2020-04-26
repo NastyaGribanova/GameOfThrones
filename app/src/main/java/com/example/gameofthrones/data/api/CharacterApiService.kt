@@ -8,9 +8,9 @@ import retrofit2.http.Path
 
 interface CharacterApiService {
 
-    @GET("/characters")
+    @GET("/api/characters")
     fun getAllCharacters(): Single<ApiCharacters>
 
-    @GET("/characters?Name={name}")
+    @GET("/api/characters?Name={name}")
     fun characterByName(@Path("name") name: String?): Single<CharacterApi>
 }

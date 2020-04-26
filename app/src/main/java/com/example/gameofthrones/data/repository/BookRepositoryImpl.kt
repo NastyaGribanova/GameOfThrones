@@ -8,7 +8,7 @@ import io.reactivex.Single
 import javax.inject.Inject
 
 class BookRepositoryImpl @Inject constructor(
-    private val apiService: BookApiService
+    private var apiService: BookApiService
 ) : BookRepository {
 
     override fun bookByName(name: String): Single<Book> {

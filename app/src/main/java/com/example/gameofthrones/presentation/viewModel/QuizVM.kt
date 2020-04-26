@@ -11,17 +11,17 @@ import io.reactivex.schedulers.Schedulers
 
 class QuizVM : ViewModel() {
 
-    private var service: CharacterApiService = ApiFactory.characterApiService
+    //private var service: CharacterApiService = ApiFactory.characterApiService
 
     private val character: MutableLiveData<CharacterApi> by lazy { MutableLiveData<CharacterApi>() }
     val characterLD: LiveData<CharacterApi> = character
 
-    fun character(name: String?) {
-        var result = service.characterByName(name)
-            .subscribeOn(Schedulers.io())
-            .observeOn(AndroidSchedulers.mainThread())
-            .subscribe({ result ->
-                character.value = result
-            })
-    }
+//    fun character(name: String?) {
+//        var result = service.characterByName(name)
+//            .subscribeOn(Schedulers.io())
+//            .observeOn(AndroidSchedulers.mainThread())
+//            .subscribe({ result ->
+//                character.value = result
+//            })
+//    }
 }

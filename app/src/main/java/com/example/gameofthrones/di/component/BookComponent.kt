@@ -8,7 +8,7 @@ import com.example.gameofthrones.presentation.viewModel.BookVM
 import dagger.Subcomponent
 
 @BookScope
-@Subcomponent(modules = [BookModule::class, ViewModelFactoryModule::class])
+@Subcomponent(modules = [BookModule::class])
 interface BookComponent {
 
     fun inject(bookFragment: BookFragment)

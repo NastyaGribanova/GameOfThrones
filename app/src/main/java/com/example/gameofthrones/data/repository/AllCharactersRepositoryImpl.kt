@@ -8,7 +8,7 @@ import io.reactivex.Single
 import javax.inject.Inject
 
 class AllCharactersRepositoryImpl @Inject constructor(
-    private val apiService: CharacterApiService
+    private var apiService: CharacterApiService
 ) : AllCharactersRepository {
     override fun getCharacters(): Single<List<Character>> {
         return apiService.getAllCharacters()

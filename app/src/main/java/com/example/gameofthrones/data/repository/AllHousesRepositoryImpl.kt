@@ -8,7 +8,7 @@ import io.reactivex.Single
 import javax.inject.Inject
 
 class AllHousesRepositoryImpl @Inject constructor(
-    private val apiService: HouseApiService
+    private var apiService: HouseApiService
 ): AllHousesRepository {
     override fun getHouses(): Single<List<House>> {
         return apiService.getAllHouses()

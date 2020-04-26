@@ -1,6 +1,7 @@
 package com.example.gameofthrones.di
 
 import com.example.gameofthrones.di.component.*
+import com.example.gameofthrones.presentation.App
 
 object AppInjector {
 

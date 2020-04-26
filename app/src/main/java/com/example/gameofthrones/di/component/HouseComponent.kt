@@ -8,7 +8,7 @@ import com.example.gameofthrones.presentation.viewModel.HouseVM
 import dagger.Subcomponent
 
 @HouseScope
-@Subcomponent(modules = [HouseModule::class, ViewModelFactoryModule::class])
+@Subcomponent(modules = [HouseModule::class])
 interface HouseComponent {
 
     fun inject(houseFragment: HouseFragment)
