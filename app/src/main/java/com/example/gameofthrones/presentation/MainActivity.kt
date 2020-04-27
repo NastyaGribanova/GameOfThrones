@@ -29,10 +29,6 @@ class MainActivity : AppCompatActivity() {
                         navController.navigate(R.id.quizFragment)
                         true
                     }
-                    R.id.library -> {
-                        navController.navigate(R.id.libraryFragment)
-                        true
-                    }
                     R.id.profile -> {
                         navController.navigate(R.id.profileFragment)
                         true
@@ -44,14 +40,14 @@ class MainActivity : AppCompatActivity() {
     }
 
     fun onBook(view: View) {
-        navController.navigate(R.id.action_libraryFragment_to_booksFragment)
+        navController.navigate(R.id.action_profileFragment_to_booksFragment)
     }
 
     fun onCharacter(view: View) {
-        navController.navigate(R.id.action_libraryFragment_to_charactersFragment)
+        navController.navigate(R.id.action_profileFragment_to_charactersFragment)
     }
 
     fun onHouse(view: View) {
-        navController.navigate(R.id.action_libraryFragment_to_housesFragment)
+        navController.navigate(R.id.action_profileFragment_to_housesFragment)
     }
 }

@@ -29,7 +29,8 @@ class BooksFragment: Fragment() {
     val bundle = Bundle()
 
     override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
+        inflater: LayoutInflater,
+        container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
         setHasOptionsMenu(true)
@@ -101,6 +102,7 @@ class BooksFragment: Fragment() {
         val searchView: SearchView = searchItem.actionView as SearchView
         searchView.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
             override fun onQueryTextSubmit(query: String): Boolean {
+                queryTextSubmit(query)
                 return true
             }
 

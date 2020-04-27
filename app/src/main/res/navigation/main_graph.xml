@@ -14,23 +14,19 @@
         android:name="com.example.gameofthrones.presentation.fragment.QuizFragment"
         android:label="QuizFragment" />
     <fragment
-        android:id="@+id/libraryFragment"
-        android:name="com.example.gameofthrones.presentation.fragment.LibraryFragment"
-        android:label="LibraryFragment" >
-        <action
-            android:id="@+id/action_libraryFragment_to_booksFragment"
-            app:destination="@id/booksFragment" />
-        <action
-            android:id="@+id/action_libraryFragment_to_charactersFragment"
-            app:destination="@id/charactersFragment" />
-        <action
-            android:id="@+id/action_libraryFragment_to_housesFragment"
-            app:destination="@id/housesFragment" />
-    </fragment>
-    <fragment
         android:id="@+id/profileFragment"
         android:name="com.example.gameofthrones.presentation.fragment.ProfileFragment"
-        android:label="ProfileFragment" />
+        android:label="ProfileFragment" >
+        <action
+            android:id="@+id/action_profileFragment_to_booksFragment"
+            app:destination="@id/booksFragment" />
+        <action
+            android:id="@+id/action_profileFragment_to_charactersFragment"
+            app:destination="@id/charactersFragment" />
+        <action
+            android:id="@+id/action_profileFragment_to_housesFragment"
+            app:destination="@id/housesFragment" />
+    </fragment>
     <fragment
         android:id="@+id/booksFragment"
         android:name="com.example.gameofthrones.presentation.recycler.book.BooksFragment"
