@@ -5,12 +5,13 @@ import com.example.gameofthrones.data.api.models.BookApi
 import io.reactivex.Single
 import retrofit2.http.GET
 import retrofit2.http.Path
+import retrofit2.http.Query
 
 interface BookApiService {
 
     @GET("/api/books")
     fun getAllBooks(): Single<ApiBooks>
 
-    @GET("/api/books?Name={name}")
-    fun bookByName(@Path("name") name: String?): Single<BookApi>
+    @GET("/api/books?")
+    fun bookByName(@Query("name") name: String?): Single<ApiBooks>
 }

@@ -4,5 +4,5 @@ import com.example.gameofthrones.domain.model.Book
 import io.reactivex.Single
 
 interface BookRepository {
-    fun bookByName(name: String): Single<Book>
+    fun bookByName(name: String): Single<ArrayList<Book>>
 }

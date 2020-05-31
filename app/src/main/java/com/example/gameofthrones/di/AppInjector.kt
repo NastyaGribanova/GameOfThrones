@@ -6,17 +6,28 @@ import com.example.gameofthrones.presentation.App
 object AppInjector {
 
     lateinit var appComponent: AppComponent
+    private var authComponent: AuthComponent? = null
     private var allBooksComponent: AllBooksComponent? = null
-    private var bookComponent: BookComponent? = null
     private var allCharactersComponent: AllCharactersComponent? = null
-    private var characterComponent: CharacterComponent? = null
     private var allHousesComponent: AllHousesComponent? = null
-    private var houseComponent: HouseComponent? = null
+    private var level1Component: Level1Component? = null
+    private var level2Component: Level2Component? = null
+    private var profileComponent: ProfileComponent? = null
 
     fun init(app: App) {
         appComponent = DaggerAppComponent.builder()
             .application(app)
             .build()
+    }
+
+    fun plusAuthComponent(): AuthComponent = authComponent
+        ?: appComponent.authComponent()
+            .build().also {
+                authComponent = it
+            }
+
+    fun clearAuthComponent() {
+        authComponent = null
     }
 
     fun plusAllBooksComponent(): AllBooksComponent = allBooksComponent
@@ -29,16 +40,6 @@ object AppInjector {
         allBooksComponent = null
     }
 
-    fun plusBookComponent(): BookComponent = bookComponent
-        ?: appComponent.bookComponent()
-            .build().also {
-                bookComponent = it
-            }
-
-    fun clearBookComponent() {
-        bookComponent = null
-    }
-
     fun plusAllCharactersComponent(): AllCharactersComponent = allCharactersComponent
         ?: appComponent.allCharactersComponent()
             .build().also {
@@ -47,16 +48,6 @@ object AppInjector {
 
     fun clearAllCharactersComponent() {
         allCharactersComponent = null
-    }
-
-    fun plusCharacterComponent(): CharacterComponent = characterComponent
-        ?: appComponent.characterComponent()
-            .build().also {
-                characterComponent = it
-            }
-
-    fun clearCharacterComponent() {
-        characterComponent = null
     }
 
     fun plusAllHousesComponent(): AllHousesComponent = allHousesComponent
@@ -69,13 +60,36 @@ object AppInjector {
         allHousesComponent = null
     }
 
-    fun plusHouseComponent(): HouseComponent = houseComponent
-        ?: appComponent.houseComponent()
+    fun plusProfileComponent(): ProfileComponent = profileComponent
+        ?: appComponent.profileComponent()
             .build().also {
-                houseComponent = it
+                profileComponent = it
             }
 
-    fun clearHouseComponent() {
-        houseComponent = null
+    fun clearProfileComponent() {
+        profileComponent = null
     }
+
+    fun plusLevel1Component(): Level1Component = level1Component
+        ?: appComponent.level1Component()
+            .build().also {
+                level1Component = it
+            }
+
+    fun clearlevel1Component() {
+        level1Component = null
+    }
+
+    fun plusLevel2Component(): Level2Component = level2Component
+        ?: appComponent.level2Component()
+            .build().also {
+                level2Component = it
+            }
+
+    fun clearlevel2Component() {
+        level2Component = null
+    }
+
+
+
 }

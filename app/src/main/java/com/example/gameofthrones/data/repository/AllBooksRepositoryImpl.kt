@@ -10,16 +10,14 @@ import javax.inject.Inject
 class AllBooksRepositoryImpl @Inject constructor(
     private var apiService: BookApiService
 ) : AllBooksRepository{
-    override fun getBooks(): Single<List<Book>> {
+    override fun getBooks(): Single<ArrayList<Book>> {
         return apiService.getAllBooks()
             .map {
-                it.map {
-                    mapBook(it)
-                }
+                mapBook(it)
             }
     }
 
-    override fun bookByName(name: String): Single<Book> {
+    override fun bookByName(name: String): Single<ArrayList<Book>> {
         return apiService.bookByName(name)
             .map {
                 mapBook(it)

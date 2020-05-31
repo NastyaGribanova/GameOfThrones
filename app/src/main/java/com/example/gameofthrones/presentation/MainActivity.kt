@@ -50,4 +50,12 @@ class MainActivity : AppCompatActivity() {
     fun onHouse(view: View) {
         navController.navigate(R.id.action_profileFragment_to_housesFragment)
     }
+
+    fun level1(view: View) {
+        navController.navigate(R.id.action_quizFragment_to_level1Fragment)
+    }
+
+    fun level2(view: View) {
+        navController.navigate(R.id.action_quizFragment_to_level2Fragment)
+    }
 }

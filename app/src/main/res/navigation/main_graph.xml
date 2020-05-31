@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/main_graph"
-    app:startDestination="@id/baseFragment">
+    app:startDestination="@id/authFragment">
 
     <fragment
         android:id="@+id/baseFragment"
@@ -12,11 +12,18 @@
     <fragment
         android:id="@+id/quizFragment"
         android:name="com.example.gameofthrones.presentation.fragment.QuizFragment"
-        android:label="QuizFragment" />
+        android:label="QuizFragment">
+        <action
+            android:id="@+id/action_quizFragment_to_level1Fragment"
+            app:destination="@id/level1Fragment" />
+        <action
+            android:id="@+id/action_quizFragment_to_level2Fragment"
+            app:destination="@id/level2Fragment" />
+    </fragment>
     <fragment
         android:id="@+id/profileFragment"
         android:name="com.example.gameofthrones.presentation.fragment.ProfileFragment"
-        android:label="ProfileFragment" >
+        android:label="ProfileFragment">
         <action
             android:id="@+id/action_profileFragment_to_booksFragment"
             app:destination="@id/booksFragment" />
@@ -26,15 +33,14 @@
         <action
             android:id="@+id/action_profileFragment_to_housesFragment"
             app:destination="@id/housesFragment" />
+        <action
+            android:id="@+id/action_profileFragment_to_authFragment"
+            app:destination="@id/authFragment" />
     </fragment>
     <fragment
         android:id="@+id/booksFragment"
         android:name="com.example.gameofthrones.presentation.recycler.book.BooksFragment"
-        android:label="BooksFragment" >
-        <action
-            android:id="@+id/action_booksFragment_to_bookFragment"
-            app:destination="@id/bookFragment" />
-    </fragment>
+        android:label="BooksFragment" />
     <fragment
         android:id="@+id/charactersFragment"
         android:name="com.example.gameofthrones.presentation.recycler.character.CharactersFragment"
@@ -46,7 +52,31 @@
         android:label="fragment_houses"
         tools:layout="@layout/fragment_houses" />
     <fragment
-        android:id="@+id/bookFragment"
-        android:name="com.example.gameofthrones.presentation.fragment.BookFragment"
-        android:label="BookFragment" />
+        android:id="@+id/level1Fragment"
+        android:name="com.example.gameofthrones.presentation.quiz.Level1Fragment"
+        android:label="Level1Fragment">
+        <action
+            android:id="@+id/action_level1Fragment_to_quizFragment"
+            app:destination="@id/quizFragment" />
+        <action
+            android:id="@+id/action_level1Fragment_to_level2Fragment"
+            app:destination="@id/level2Fragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/level2Fragment"
+        android:name="com.example.gameofthrones.presentation.quiz.Level2Fragment"
+        android:label="Level2Fragment">
+        <action
+            android:id="@+id/action_level2Fragment_to_quizFragment"
+            app:destination="@id/quizFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/authFragment"
+        android:name="com.example.gameofthrones.presentation.fragment.AuthFragment"
+        android:label="fragment_auth"
+        tools:layout="@layout/fragment_auth" >
+        <action
+            android:id="@+id/action_authFragment_to_profileFragment"
+            app:destination="@id/profileFragment" />
+    </fragment>
 </navigation>

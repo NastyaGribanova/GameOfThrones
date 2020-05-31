@@ -6,4 +6,19 @@
     android:layout_height="match_parent"
     tools:context=".presentation.recycler.character.CharactersFragment">
 
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rv_characters"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginTop="16dp"
+        android:scrollbars="vertical"
+        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="parent"
+        tools:itemCount="15"
+        tools:listitem="@layout/item_character" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

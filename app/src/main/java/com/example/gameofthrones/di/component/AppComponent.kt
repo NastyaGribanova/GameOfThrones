@@ -2,21 +2,23 @@ package com.example.gameofthrones.di.component
 
 import com.example.gameofthrones.presentation.App
 import com.example.gameofthrones.di.module.ApiFactoryModule
+import com.example.gameofthrones.di.module.AppModule
 import com.example.gameofthrones.di.module.ViewModelFactoryModule
 import com.example.gameofthrones.di.scope.ApplicationScope
 import dagger.BindsInstance
 import dagger.Component
 
 @ApplicationScope
-@Component(modules = [ApiFactoryModule::class, ViewModelFactoryModule::class])
+@Component(modules = [AppModule::class, ApiFactoryModule::class, ViewModelFactoryModule::class])
 interface AppComponent {
 
+    fun authComponent(): AuthComponent.Builder
     fun allBooksComponent(): AllBooksComponent.Builder
-    fun bookComponent(): BookComponent.Builder
     fun allCharactersComponent(): AllCharactersComponent.Builder
-    fun characterComponent(): CharacterComponent.Builder
     fun allHousesComponent(): AllHousesComponent.Builder
-    fun houseComponent(): HouseComponent.Builder
+    fun profileComponent(): ProfileComponent.Builder
+    fun level1Component(): Level1Component.Builder
+    fun level2Component(): Level2Component.Builder
 
     @Component.Builder
     interface Builder {

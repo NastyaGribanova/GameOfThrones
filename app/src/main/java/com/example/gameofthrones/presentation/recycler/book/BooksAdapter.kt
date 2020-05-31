@@ -3,10 +3,11 @@ package com.example.gameofthrones.presentation.recycler.book
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.example.gameofthrones.domain.model.Book
+import com.example.gameofthrones.presentation.model.BookModel
 
 class BooksAdapter (
-    var bookList: List<Book>,
-    private val clickLambda: (Book) -> Unit
+    private var bookList: List<BookModel>,
+    private val clickLambda: (BookModel) -> Unit
 ) : RecyclerView.Adapter<BooksHolder>()  {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): BooksHolder =
@@ -17,6 +18,7 @@ class BooksAdapter (
 
     override fun getItemCount(): Int = bookList.size
 
-    override fun onBindViewHolder(holder: BooksHolder, position: Int) =
+    override fun onBindViewHolder(holder: BooksHolder, position: Int) {
         holder.bind(bookList[position])
+    }
 }

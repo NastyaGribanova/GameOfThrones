@@ -11,7 +11,7 @@ class BookRepositoryImpl @Inject constructor(
     private var apiService: BookApiService
 ) : BookRepository {
 
-    override fun bookByName(name: String): Single<Book> {
+    override fun bookByName(name: String): Single<ArrayList<Book>> {
         return apiService.bookByName(name)
             .map {
                 mapBook(it)

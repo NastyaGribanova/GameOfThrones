@@ -1,3 +1,16 @@
 <resources>
     <string name="app_name">Game of Thrones</string>
+    <string name="back">Back</string>
+    <string name="level">Level:</string>
+    <string name="level1">Level 1</string>
+    <string name="level2">Level 2</string>
+    <string name="textContinue">Continue</string>
+    <string name="sign_up">Sign up</string>
+    <string name="email">Email</string>
+    <string name="password">Password</string>
+    <string name="sign_in">Sign in</string>
+    <string name="forgot_password">Forgot password?</string>
+    <string name="register">Register</string>
+    <string name="choose_level">Choose level</string>
+    <string name="name">Name</string>
 </resources>

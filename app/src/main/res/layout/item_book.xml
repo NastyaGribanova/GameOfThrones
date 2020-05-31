@@ -1,19 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="88dp"
     android:background="?android:attr/selectableItemBackground"
     android:paddingStart="16dp"
-    android:paddingEnd="16dp">
+    android:paddingEnd="16dp"
+    xmlns:android="http://schemas.android.com/apk/res/android">
 
     <TextView
         android:id="@+id/tv_name"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
-        android:textColor="#000000"
+        android:textColor="@color/white"
         android:textSize="18sp"
         android:textStyle="italic|bold"
         app:layout_constraintEnd_toEndOf="parent"
@@ -21,10 +22,23 @@
         app:layout_constraintTop_toTopOf="parent"
         tools:text="Name" />
 
+    <TextView
+        android:id="@+id/tv_publisher"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="38dp"
+        android:textColor="@color/white"
+        android:textSize="18sp"
+        android:textStyle="italic"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/iv_poster"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:text="Publisher" />
+
     <View
         android:layout_width="0dp"
         android:layout_height="1dp"
-        android:background="@android:color/holo_green_dark"
+        android:background="@color/white"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
@@ -35,6 +49,7 @@
         android:layout_height="80dp"
         android:paddingStart="16dp"
         android:paddingEnd="16dp"
+        android:tint="#CBFFFFFF"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@id/tv_name"
         app:layout_constraintStart_toStartOf="parent"
