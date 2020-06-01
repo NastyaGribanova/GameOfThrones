@@ -4,7 +4,6 @@ import com.example.gameofthrones.data.api.models.ApiHouses
 import com.example.gameofthrones.data.api.models.HouseApi
 import io.reactivex.Single
 import retrofit2.http.GET
-import retrofit2.http.Path
 import retrofit2.http.Query
 
 interface HouseApiService {

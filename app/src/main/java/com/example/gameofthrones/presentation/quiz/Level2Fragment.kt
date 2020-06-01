@@ -18,7 +18,6 @@ import androidx.navigation.NavController
 import androidx.navigation.Navigation
 import com.example.gameofthrones.R
 import com.example.gameofthrones.di.AppInjector
-import com.example.gameofthrones.presentation.viewModel.quiz.Level1VM
 import com.example.gameofthrones.presentation.viewModel.quiz.Level2VM
 import javax.inject.Inject
 import kotlin.random.Random
@@ -243,7 +242,7 @@ class Level2Fragment: Fragment() {
 
         var btnContinue: TextView = dialogEnd.findViewById(R.id.btn_continue)
         btnContinue.setOnClickListener() {
-            navController.navigate(R.id.action_level1Fragment_to_level2Fragment)
+            navController.navigate(R.id.action_level2Fragment_to_level3Fragment)
             dialogEnd.dismiss()
         }
         dialogEnd.show()

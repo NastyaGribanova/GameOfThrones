@@ -5,10 +5,8 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.example.gameofthrones.R
-import com.example.gameofthrones.domain.model.Book
 import com.example.gameofthrones.presentation.model.BookModel
 import kotlinx.android.extensions.LayoutContainer
-import kotlinx.android.synthetic.main.item_book.tv_name
 import kotlinx.android.synthetic.main.item_book.view.*
 
 class BooksHolder(

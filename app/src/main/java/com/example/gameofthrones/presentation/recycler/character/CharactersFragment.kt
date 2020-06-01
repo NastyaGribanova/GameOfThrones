@@ -8,12 +8,9 @@ import android.widget.SearchView
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
-import androidx.navigation.Navigation
-import androidx.navigation.fragment.NavHostFragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.gameofthrones.R
 import com.example.gameofthrones.di.AppInjector
-import com.example.gameofthrones.domain.model.Character
 import com.example.gameofthrones.presentation.model.CharacterModel
 import com.example.gameofthrones.presentation.viewModel.AllCharactersVM
 import com.google.android.material.snackbar.Snackbar

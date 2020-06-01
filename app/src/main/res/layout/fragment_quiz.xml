@@ -92,6 +92,7 @@
                             android:layout_marginRight="10dp"
                             android:background="@drawable/btn_gamelevels"
                             android:gravity="center"
+                            android:onClick="level3"
                             android:text="3"
                             android:textColor="@color/colorPrimaryDark"
                             android:textSize="24sp"

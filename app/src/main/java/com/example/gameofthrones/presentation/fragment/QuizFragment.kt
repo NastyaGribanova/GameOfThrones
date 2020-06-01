@@ -7,7 +7,6 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import com.example.gameofthrones.R
 
-
 class QuizFragment: Fragment() {
 
     override fun onCreateView(

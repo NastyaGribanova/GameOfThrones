@@ -3,10 +3,8 @@ package com.example.gameofthrones.di.module
 import androidx.lifecycle.ViewModel
 import com.example.gameofthrones.data.repository.Level1RepositoryImpl
 import com.example.gameofthrones.di.ViewModelKey
-import com.example.gameofthrones.di.scope.Level1Scope
 import com.example.gameofthrones.di.scope.Level2Scope
 import com.example.gameofthrones.domain.interfaces.Level1Repository
-import com.example.gameofthrones.presentation.viewModel.quiz.Level1VM
 import com.example.gameofthrones.presentation.viewModel.quiz.Level2VM
 import dagger.Module
 import dagger.Provides

@@ -20,6 +20,9 @@
         <action
             android:id="@+id/action_quizFragment_to_level2Fragment"
             app:destination="@id/level2Fragment" />
+        <action
+            android:id="@+id/action_quizFragment_to_level3Fragment"
+            app:destination="@id/level3Fragment" />
     </fragment>
     <fragment
         android:id="@+id/profileFragment"
@@ -70,6 +73,9 @@
         <action
             android:id="@+id/action_level2Fragment_to_quizFragment"
             app:destination="@id/quizFragment" />
+        <action
+            android:id="@+id/action_level2Fragment_to_level3Fragment"
+            app:destination="@id/level3Fragment" />
     </fragment>
     <fragment
         android:id="@+id/authFragment"
@@ -79,5 +85,13 @@
         <action
             android:id="@+id/action_authFragment_to_profileFragment"
             app:destination="@id/profileFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/level3Fragment"
+        android:name="com.example.gameofthrones.presentation.quiz.Level3Fragment"
+        android:label="Level3Fragment" >
+        <action
+            android:id="@+id/action_level3Fragment_to_quizFragment"
+            app:destination="@id/quizFragment" />
     </fragment>
 </navigation>

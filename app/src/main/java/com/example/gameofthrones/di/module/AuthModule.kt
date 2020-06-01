@@ -4,7 +4,7 @@ import androidx.lifecycle.ViewModel
 import com.example.gameofthrones.data.repository.AuthenticationImpl
 import com.example.gameofthrones.di.ViewModelKey
 import com.example.gameofthrones.di.scope.AuthScope
-import com.example.gameofthrones.domain.Authentication
+import com.example.gameofthrones.domain.interfaces.Authentication
 import com.example.gameofthrones.presentation.viewModel.AuthVM
 import dagger.Module
 import dagger.Provides

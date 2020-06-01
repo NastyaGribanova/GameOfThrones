@@ -1,7 +1,6 @@
 package com.example.gameofthrones.data.repository
 
 import com.example.gameofthrones.data.api.HouseApiService
-import com.example.gameofthrones.data.mapper.mapHouse
 import com.example.gameofthrones.data.mapper.mapHouses
 import com.example.gameofthrones.domain.interfaces.AllHousesRepository
 import com.example.gameofthrones.domain.model.House

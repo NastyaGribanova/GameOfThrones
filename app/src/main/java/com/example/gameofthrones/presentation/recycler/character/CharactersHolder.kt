@@ -5,7 +5,6 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.example.gameofthrones.R
-import com.example.gameofthrones.domain.model.Character
 import com.example.gameofthrones.presentation.model.CharacterModel
 import kotlinx.android.extensions.LayoutContainer
 import kotlinx.android.synthetic.main.item_character.view.*

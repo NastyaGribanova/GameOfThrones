@@ -6,6 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
+import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.NavController
@@ -13,7 +14,6 @@ import androidx.navigation.Navigation
 import com.example.gameofthrones.R
 import com.example.gameofthrones.di.AppInjector
 import com.example.gameofthrones.presentation.viewModel.ProfileVM
-import com.example.gameofthrones.presentation.viewModel.quiz.Level1VM
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import javax.inject.Inject
 
@@ -53,7 +53,8 @@ class ProfileFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         activity?.findViewById<BottomNavigationView>(R.id.btv_main)?.visibility = View.VISIBLE
-
+        getData()
+        getInterests()
         logout()
     }
 
@@ -63,6 +64,22 @@ class ProfileFragment : Fragment() {
             model?.signOut()
             navController.navigate(R.id.action_profileFragment_to_authFragment)
         })
+    }
+
+    fun getData(){
+        val name: TextView = requireView().findViewById(R.id.tv_name)
+        name.text = model?.getName("Users", model?.getEmail()!!)
+        val email: TextView = requireView().findViewById(R.id.tv_email)
+        email.text = model?.getEmail()
+    }
+
+    fun getInterests(){
+        val favBook: TextView = requireView().findViewById(R.id.tv_fav_book)
+
+        val favChar: TextView = requireView().findViewById(R.id.tv_fav_char)
+
+        val favSeason: TextView = requireView().findViewById(R.id.tv_fav_season)
+
     }
 
     companion object {

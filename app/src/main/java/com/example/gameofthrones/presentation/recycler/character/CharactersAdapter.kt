@@ -2,7 +2,6 @@ package com.example.gameofthrones.presentation.recycler.character
 
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import com.example.gameofthrones.domain.model.Character
 import com.example.gameofthrones.presentation.model.CharacterModel
 
 class CharactersAdapter (

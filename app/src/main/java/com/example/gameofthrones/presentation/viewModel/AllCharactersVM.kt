@@ -1,7 +1,6 @@
 package com.example.gameofthrones.presentation.viewModel
 
 import android.util.Log
-import android.view.View
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -10,7 +9,6 @@ import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.schedulers.Schedulers
 import com.example.gameofthrones.domain.model.Character
 import com.example.gameofthrones.presentation.model.CharacterModel
-import io.reactivex.Single
 import io.reactivex.disposables.CompositeDisposable
 import retrofit2.HttpException
 

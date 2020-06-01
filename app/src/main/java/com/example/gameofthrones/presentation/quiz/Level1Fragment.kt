@@ -22,7 +22,6 @@ import com.example.gameofthrones.presentation.viewModel.quiz.Level1VM
 import javax.inject.Inject
 import kotlin.random.Random
 
-
 class Level1Fragment: Fragment() {
 
     lateinit var dialog: Dialog

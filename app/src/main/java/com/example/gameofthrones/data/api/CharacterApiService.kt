@@ -4,7 +4,6 @@ import com.example.gameofthrones.data.api.models.ApiCharacters
 import com.example.gameofthrones.data.api.models.CharacterApi
 import io.reactivex.Single
 import retrofit2.http.GET
-import retrofit2.http.Path
 import retrofit2.http.Query
 
 interface CharacterApiService {

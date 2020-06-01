@@ -1,15 +1,13 @@
 package com.example.gameofthrones.di.component
 
+import com.example.gameofthrones.di.module.*
 import com.example.gameofthrones.presentation.App
-import com.example.gameofthrones.di.module.ApiFactoryModule
-import com.example.gameofthrones.di.module.AppModule
-import com.example.gameofthrones.di.module.ViewModelFactoryModule
 import com.example.gameofthrones.di.scope.ApplicationScope
 import dagger.BindsInstance
 import dagger.Component
 
 @ApplicationScope
-@Component(modules = [AppModule::class, ApiFactoryModule::class, ViewModelFactoryModule::class])
+@Component(modules = [DataBaseModule::class, FirebaseModule::class, AppModule::class, ApiFactoryModule::class, ViewModelFactoryModule::class])
 interface AppComponent {
 
     fun authComponent(): AuthComponent.Builder

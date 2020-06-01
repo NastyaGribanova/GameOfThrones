@@ -58,4 +58,8 @@ class MainActivity : AppCompatActivity() {
     fun level2(view: View) {
         navController.navigate(R.id.action_quizFragment_to_level2Fragment)
     }
+
+    fun level3(view: View) {
+        navController.navigate(R.id.action_quizFragment_to_level3Fragment)
+    }
 }

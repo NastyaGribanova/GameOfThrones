@@ -2,7 +2,6 @@ package com.example.gameofthrones.presentation.recycler.book
 
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import com.example.gameofthrones.domain.model.Book
 import com.example.gameofthrones.presentation.model.BookModel
 
 class BooksAdapter (

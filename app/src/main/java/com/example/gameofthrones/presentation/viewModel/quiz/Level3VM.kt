@@ -6,10 +6,6 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.example.gameofthrones.domain.interfaces.Level3Repository
 import com.example.gameofthrones.domain.model.AryaList
-import com.example.gameofthrones.presentation.model.HouseModel
-import io.reactivex.android.schedulers.AndroidSchedulers
-import io.reactivex.disposables.CompositeDisposable
-import io.reactivex.schedulers.Schedulers
 
 class Level3VM(
     private val level3Repository: Level3Repository
@@ -18,27 +14,44 @@ class Level3VM(
     private val ariaList: MutableLiveData<ArrayList<AryaList>> by lazy { MutableLiveData<ArrayList<AryaList>>() }
     val ariaListLD: LiveData<ArrayList<AryaList>> = ariaList
 
-    private val rightAnswer: MutableLiveData<Boolean> by lazy { MutableLiveData<Boolean>() }
-    val rightAnswerLD: LiveData<Boolean> = rightAnswer
-
     private val rightAnswerNum: MutableLiveData<Int> by lazy { MutableLiveData<Int>() }
     val rightAnswerNumLD: LiveData<Int> = rightAnswerNum
 
     fun getData(){
-        ariaList.value = level3Repository.getData()
+        var victims = ArrayList<AryaList>()
+        level3Repository.getData("AriaList").addOnSuccessListener {
+            for (document in it) {
+                victims.add(AryaList(document.data.getValue("name").toString(),
+                    document.data.get("have").toString()))
+            }
+            ariaList.value = victims
+        }
     }
 
-    fun checkAnswer(answer: String, name: String){
-        rightAnswer.value = level3Repository.victimByName(name)[0].have == answer
+    fun checkAnswers(name: String, answer: String){
+        level3Repository.getDataByField("AriaList", "name", name).addOnSuccessListener {
+            for (document in it) {
+                if(document.data.get("have").toString().equals(answer)){
+                    rightAnswerNum.value = 1
+                }
+                else {
+                    rightAnswerNum.value = 2
+                }
+                Log.d("victim", document.data.toString())
+            }
+
+        }
     }
 
-    fun checkAnswerNum(answer: String, name: String){
-        if (level3Repository.victimByName(name)[0].have == answer){
-            rightAnswerNum.value = 1
+    fun getVictimByName(name: String): AryaList{
+        var victim = AryaList(name, "have")
+        level3Repository.getDataByField("AriaList", "name", name).addOnSuccessListener {
+            for (document in it) {
+                victim = AryaList(document.data.getValue("name").toString(),
+                    document.data.get("have").toString())
+            }
         }
-        if (level3Repository.victimByName(name)[0].have != answer){
-            rightAnswerNum.value = 2
-        }
+        return victim
     }
 
     fun getRandomVictim(number: Int, victims: ArrayList<AryaList>): AryaList {

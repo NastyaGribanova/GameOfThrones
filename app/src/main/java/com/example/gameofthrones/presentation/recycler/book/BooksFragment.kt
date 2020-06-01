@@ -8,18 +8,13 @@ import android.widget.SearchView
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
-import androidx.navigation.Navigation
-import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView
 import com.example.gameofthrones.R
 import com.example.gameofthrones.di.AppInjector
-import com.example.gameofthrones.domain.model.Book
 import com.example.gameofthrones.presentation.model.BookModel
 import com.example.gameofthrones.presentation.viewModel.AllBooksVM
 import com.google.android.material.snackbar.Snackbar
 import kotlinx.android.synthetic.main.fragment_books.*
-import java.io.IOException
 import javax.inject.Inject
 
 class BooksFragment: Fragment() {

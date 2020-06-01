@@ -5,6 +5,7 @@ import android.content.Context
 import android.graphics.Color
 import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
+import android.util.Log
 import android.view.*
 import android.view.animation.Animation
 import android.view.animation.AnimationUtils
@@ -18,8 +19,6 @@ import androidx.navigation.NavController
 import androidx.navigation.Navigation
 import com.example.gameofthrones.R
 import com.example.gameofthrones.di.AppInjector
-import com.example.gameofthrones.presentation.viewModel.quiz.Level1VM
-import com.example.gameofthrones.presentation.viewModel.quiz.Level2VM
 import com.example.gameofthrones.presentation.viewModel.quiz.Level3VM
 import javax.inject.Inject
 import kotlin.random.Random
@@ -88,23 +87,27 @@ class Level3Fragment: Fragment() {
 
         answersAndQuestion(numAnswer1, numAnswer2, numQuestion)
 
+        Log.d("victimByName", model?.getVictimByName(answer1.text.toString()).toString())
+
         answer1.setOnTouchListener(View.OnTouchListener(
             fun(view: View?, motionEvent: MotionEvent): Boolean{
                 when (motionEvent.action) {
                     MotionEvent.ACTION_DOWN -> {
                         answer2.isEnabled = false
-                        model?.checkAnswer(answer1.text.toString(), question.text.toString())
-                        model?.rightAnswerLD?.observe(viewLifecycleOwner, Observer {
-                            if (it == true){
+                        model?.checkAnswers(answer1.text.toString(), question.text.toString())
+                        Log.d("victim4", answer1.text.toString())
+
+                        model?.rightAnswerNumLD?.observe(viewLifecycleOwner, Observer {
+                            if (it == 1){
                                 img_answer.setImageDrawable(resources.getDrawable(R.drawable.img_true))
-                            } else if (it == false) {
+                            } else if (it == 2) {
                                 img_answer.setImageDrawable(resources.getDrawable(R.drawable.img_false))
                             }
                         })
                     }
                     MotionEvent.ACTION_UP -> {
                         var check: Int = 3
-                        model?.checkAnswerNum(answer1.text.toString(), question.text.toString())
+                        model?.checkAnswers(answer1.text.toString(), question.text.toString())
                         model?.rightAnswerNumLD?.observe(viewLifecycleOwner, Observer {
                             check = it
                         })
@@ -147,18 +150,18 @@ class Level3Fragment: Fragment() {
                 when (motionEvent.action) {
                     MotionEvent.ACTION_DOWN -> {
                         answer1.isEnabled = false
-                        model?.checkAnswer(answer2.text.toString(), question.text.toString())
-                        model?.rightAnswerLD?.observe(viewLifecycleOwner, Observer {
-                            if (it == true){
+                        model?.checkAnswers(answer2.text.toString(), question.text.toString())
+                        model?.rightAnswerNumLD?.observe(viewLifecycleOwner, Observer {
+                            if (it == 1){
                                 img_answer.setImageDrawable(resources.getDrawable(R.drawable.img_true))
-                            } else if (it == false){
+                            } else if (it == 2){
                                 img_answer.setImageDrawable(resources.getDrawable(R.drawable.img_false))
                             }
                         })
                     }
                     MotionEvent.ACTION_UP -> {
                         var check: Int = 3
-                        model?.checkAnswerNum(answer2.text.toString(), question.text.toString())
+                        model?.checkAnswers(answer2.text.toString(), question.text.toString())
                         model?.rightAnswerNumLD?.observe(viewLifecycleOwner, Observer {
                             check = it
                         })
@@ -205,7 +208,7 @@ class Level3Fragment: Fragment() {
             window.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
 
             var textDescription: TextView =dialog.findViewById(R.id.tv_description)
-            textDescription.setText(R.string.level_two)
+            textDescription.setText(R.string.level_three)
             setCancelable(false)
         }
 
@@ -216,7 +219,7 @@ class Level3Fragment: Fragment() {
 
         var btnClose: TextView = dialog.findViewById(R.id.btn_close)
         btnClose.setOnClickListener() {
-            navController.navigate(R.id.action_level2Fragment_to_quizFragment)
+            navController.navigate(R.id.action_level3Fragment_to_quizFragment)
             dialog.dismiss()
         }
         dialog.show()
@@ -232,13 +235,13 @@ class Level3Fragment: Fragment() {
                 WindowManager.LayoutParams.MATCH_PARENT)
 
             var textDescription: TextView =dialog.findViewById(R.id.tv_description)
-            textDescription.text = R.string.level_two_end.toString()
+            textDescription.text = R.string.level_three_end.toString()
             setCancelable(false)
         }
 
         var btnClose: TextView = dialogEnd.findViewById(R.id.btn_close)
         btnClose.setOnClickListener() {
-            navController.navigate(R.id.action_level2Fragment_to_quizFragment)
+            navController.navigate(R.id.action_level3Fragment_to_quizFragment)
             dialogEnd.dismiss()
         }
 
@@ -253,7 +256,7 @@ class Level3Fragment: Fragment() {
     fun btnBack(){
         val btnBack: Button = requireView().findViewById(R.id.btn_back)
         btnBack.setOnClickListener(View.OnClickListener {
-            navController.navigate(R.id.action_level2Fragment_to_quizFragment)
+            navController.navigate(R.id.action_level3Fragment_to_quizFragment)
         })
     }
 
@@ -296,6 +299,6 @@ class Level3Fragment: Fragment() {
 
     override fun onDestroy() {
         super.onDestroy()
-        AppInjector.clearlevel2Component()
+        AppInjector.clearlevel3Component()
     }
 }
