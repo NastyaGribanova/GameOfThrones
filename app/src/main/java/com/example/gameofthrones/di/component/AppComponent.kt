@@ -19,6 +19,7 @@ interface AppComponent {
     fun profileComponent(): ProfileComponent.Builder
     fun level1Component(): Level1Component.Builder
     fun level2Component(): Level2Component.Builder
+    fun level3Component(): Level3Component.Builder
 
     @Component.Builder
     interface Builder {

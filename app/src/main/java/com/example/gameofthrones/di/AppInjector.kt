@@ -12,6 +12,7 @@ object AppInjector {
     private var allHousesComponent: AllHousesComponent? = null
     private var level1Component: Level1Component? = null
     private var level2Component: Level2Component? = null
+    private var level3Component: Level3Component? = null
     private var profileComponent: ProfileComponent? = null
 
     fun init(app: App) {
@@ -90,6 +91,14 @@ object AppInjector {
         level2Component = null
     }
 
+    fun plusLevel3Component(): Level3Component = level3Component
+        ?: appComponent.level3Component()
+            .build().also {
+                level3Component = it
+            }
 
+    fun clearlevel3Component() {
+        level3Component = null
+    }
 
 }

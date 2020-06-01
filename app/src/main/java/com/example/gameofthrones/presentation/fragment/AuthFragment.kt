@@ -7,6 +7,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.NavController
 import androidx.navigation.Navigation
@@ -48,14 +49,13 @@ class AuthFragment: Fragment() {
 
         activity?.findViewById<BottomNavigationView>(R.id.btv_main)?.visibility = View.GONE
 
-        if(model?.isAuth() ?:false) {
-            Navigation.findNavController(view).navigate(R.id.profileFragment)
-        } else  Log.d("IsAuth", "false")
+//        if(model?.isAuth() ?:false) {
+//            Navigation.findNavController(view).navigate(R.id.profileFragment)
+//        } else  Log.d("IsAuth", "false")
 
         btn_register.setOnClickListener() { x ->
             if (
-                model?.createAccount(et_email.text.toString(), et_password.text.toString())
-                    .equals("success")
+                model?.createAccount(et_email.text.toString(), et_password.text.toString())!!
             ){
                 activity?.let {
                     Snackbar.make(
@@ -65,22 +65,38 @@ class AuthFragment: Fragment() {
                     ).show()
                 }
                 navController.navigate(R.id.action_authFragment_to_profileFragment)
-            }
-        }
-        btn_auth.setOnClickListener() { x ->
-            if (
-                model?.signIn(et_email.text.toString(), et_password.text.toString())
-                    .equals("success")
-            ) {
-                getActivity()?.let {
+            } else {
+                activity?.let {
                     Snackbar.make(
                         it.findViewById(android.R.id.content),
-                        "Success",
+                        "Fail, try again",
                         Snackbar.LENGTH_LONG
                     ).show()
                 }
-                navController.navigate(R.id.action_authFragment_to_profileFragment)
             }
+        }
+        btn_auth.setOnClickListener() { x ->
+            model?.checkSignIn(et_email.text.toString(), et_password.text.toString())
+            model?.signInLD?.observe(viewLifecycleOwner, Observer {
+                if (it){
+                    activity?.let {
+                        Snackbar.make(
+                            it.findViewById(android.R.id.content),
+                            "Success",
+                            Snackbar.LENGTH_LONG
+                        ).show()
+                    }
+                    navController.navigate(R.id.action_authFragment_to_profileFragment)
+                } else {
+                    activity?.let {
+                        Snackbar.make(
+                            it.findViewById(android.R.id.content),
+                            "Fail, try again",
+                            Snackbar.LENGTH_LONG
+                        ).show()
+                    }
+                }
+            })
         }
     }
     override fun onDestroy() {

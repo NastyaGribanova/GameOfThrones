@@ -45,8 +45,8 @@ class CharactersFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        initObservers()
         model?.getCharacters()
+        initObservers()
     }
 
     fun initViewModel(){

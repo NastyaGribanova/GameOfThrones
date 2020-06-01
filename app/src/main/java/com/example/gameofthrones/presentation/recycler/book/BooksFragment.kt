@@ -64,7 +64,7 @@ class BooksFragment: Fragment() {
     }
 
     private fun initObservers() {
-        model?.bookLD?.observe(viewLifecycleOwner, Observer {
+        model?.booksLD?.observe(viewLifecycleOwner, Observer {
             setAdapter(it)
         })
         model?.errorBookLD?.observe(viewLifecycleOwner, Observer {

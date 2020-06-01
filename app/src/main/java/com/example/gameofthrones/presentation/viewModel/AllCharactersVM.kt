@@ -20,9 +20,6 @@ class AllCharactersVM (
 
     private val compositeDisposable = CompositeDisposable()
 
-    private val character: MutableLiveData<List<CharacterModel>> by lazy { MutableLiveData<List<CharacterModel>>() }
-    val characterLD: LiveData<List<CharacterModel>> = character
-
     private val characters: MutableLiveData<ArrayList<CharacterModel>> by lazy { MutableLiveData<ArrayList<CharacterModel>>() }
     val charactersLD: LiveData<ArrayList<CharacterModel>> = characters
 

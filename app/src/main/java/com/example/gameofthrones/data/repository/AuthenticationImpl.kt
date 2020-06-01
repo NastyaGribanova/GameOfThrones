@@ -18,35 +18,35 @@ class AuthenticationImpl @Inject constructor(
     private  var database: FirebaseDatabase = FirebaseDatabase.getInstance()
     var myRef: DatabaseReference = database.reference
 
-    override fun createAccount(email: String, password: String): String {
-        var result: String =  ""
+    override fun createAccount(email: String, password: String): Boolean {
+        var result: Boolean =  false
         mAuth.createUserWithEmailAndPassword(email, password)
             .addOnCompleteListener { task ->
                 if (task.isSuccessful) {
                     val user: FirebaseUser? = mAuth.currentUser
                     //                   myRef.child("user").child(user?.uid.toString()).setValue(user)
                     Log.d(TAG, "createUserWithEmail:success")
-                    result = "success"
+                    result = true
 
                 } else {
                     Log.w(TAG, "createUserWithEmail:failure", task.exception)
-                    result = "failed"
+                    result = false
                 }
             }
         return result
     }
 
-    override fun signIn(email: String, password: String):String {
-        var result: String =  ""
+    override fun signIn(email: String, password: String):Boolean {
+        var result: Boolean =  false
         mAuth.signInWithEmailAndPassword(email, password)
             .addOnCompleteListener { task ->
                 if (task.isSuccessful) {
                     Log.d(TAG, "signInWithEmail:success")
-                    result = "success"
+                    result = true
 
                 } else {
                     Log.w(TAG, "signInWithEmail:failure", task.exception)
-                    result = "failed"
+                    result = false
                 }
             }
         return result
