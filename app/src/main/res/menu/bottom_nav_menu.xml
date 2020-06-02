@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/base"
+        android:backgroundTint="#7BFBF9F9"
+        android:icon="@drawable/ic_castle"
+        android:title="Base" />
+
+    <item
+        android:id="@+id/quiz"
+        android:backgroundTint="#7BFBF9F9"
+        android:icon="@drawable/ic_img_questionn"
+        android:title="Quiz" />
+
+    <item
+        android:id="@+id/profile"
+        android:backgroundTint="#7FFBF9F9"
+        android:icon="@drawable/img_player"
+        android:title="Profile" />
+
+</menu>

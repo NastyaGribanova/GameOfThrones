@@ -1,3 +1,30 @@
 <resources>
     <string name="app_name">Game of Thrones</string>
+    <string name="back">Back</string>
+    <string name="level">Level:</string>
+    <string name="level1">Level 1</string>
+    <string name="level2">Level 2</string>
+    <string name="level3">Level 3</string>
+    <string name="level4">Level 4</string>
+    <string name="level5">Level 5</string>
+    <string name="level6">Level 6</string>
+    <string name="level7">Level 7</string>
+    <string name="level8">Level 8</string>
+    <string name="level9">Level 9</string>
+    <string name="level10">Level 10</string>
+    <string name="textContinue">Continue</string>
+    <string name="sign_up">Sign up</string>
+    <string name="email">Email</string>
+    <string name="password">Password</string>
+    <string name="sign_in">Sign in</string>
+    <string name="forgot_password">Forgot password?</string>
+    <string name="register">Register</string>
+    <string name="choose_level">Choose level</string>
+    <string name="close">X</string>
+    <string name="name">Name</string>
+    <string name="email_ru">Email@.ru</string>
+    <string name="logout">Logout</string>
+    <string name="settings">Settings</string>
+    <string name="rules">The base upgrades by every four coins. \n Coins can be obtained by playing the quiz. You get 2 coins for the completed level.</string>
+    <string name="endGame">That\'s all for now.\n Wait for new updates)</string>
 </resources>

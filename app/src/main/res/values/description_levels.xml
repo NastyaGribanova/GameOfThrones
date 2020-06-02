@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="level_one">Choose where the house is located.\n
+                        Questions can be repeated until you score 10 points\n
+                        If you make a mistake once, points are not deducted, but you must answer twice after that, so that the point is awarded</string>
+    <string name="level_one_end">"Successfully!\n"</string>
+    <string name="level_two">Choose which house have this coat of arms.\n
+                        Questions can be repeated until you score 10 points\n
+                        If you make a mistake once, points are not deducted, but you must answer twice after that, so that the point is awarded</string>
+    <string name="level_two_end">"Victory!\n"</string>
+    <string name="level_three">Answer is whether character is in the Aryas list.\n
+                        Questions can be repeated until you score 10 points\n
+                        If you make a mistake once, points are not deducted, but you must answer twice after that, so that the point is awarded</string>
+    <string name="level_three_end">"Good job!\n"</string>
+    <string name="level_fourth">Choose which actor played the character.\n
+                        Questions can be repeated until you score 10 points\n
+                        If you make a mistake once, points are not deducted, but you must answer twice after that, so that the point is awarded</string>
+    <string name="level_fourth_end">"Nice!\n"</string>
+    <string name="level_fifth">Choose what year the book was written in.\n
+                        Questions can be repeated until you score 10 points\n
+                        If you make a mistake once, points are not deducted, but you must answer twice after that, so that the point is awarded</string>
+    <string name="level_fifth_end">"Not bad!\n"</string>
+    <string name="level_sixth">Choose if the character is alive or dead.\n
+                        Questions can be repeated until you score 10 points\n
+                        If you make a mistake once, points are not deducted, but you must answer twice after that, so that the point is awarded</string>
+    <string name="level_sixth_end">"Good work!\n"</string>
+    <string name="level_seventh">Choose the motto of the house.\n
+                        Questions can be repeated until you score 10 points\n
+                        If you make a mistake once, points are not deducted, but you must answer twice after that, so that the point is awarded</string>
+    <string name="level_seventh_end">"Well played!\n"</string>
+    <string name="level_eighth">Choose who murdered the character.\n
+                        Questions can be repeated until you score 10 points\n
+                        If you make a mistake once, points are not deducted, but you must answer twice after that, so that the point is awarded</string>
+    <string name="level_eighth_end">"Nice work!\n"</string>
+    <string name="level_nineth">Choose whose sword it is.\n
+                        Questions can be repeated until you score 10 points\n
+                        If you make a mistake once, points are not deducted, but you must answer twice after that, so that the point is awarded</string>
+    <string name="level_nineth_end">"Good for you!\n"</string>
+    <string name="level_tenth">Choose region where is the city located.\n
+                        Questions can be repeated until you score 10 points\n
+                        If you make a mistake once, points are not deducted, but you must answer twice after that, so that the point is awarded</string>
+    <string name="level_tenth_end">"Well done!\n"</string>
+</resources>
