@@ -4,7 +4,9 @@ import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.example.gameofthrones.domain.interfaces.Level1Repository
+import com.example.gameofthrones.domain.interfaces.Authentication
+import com.example.gameofthrones.domain.interfaces.DataBase
+import com.example.gameofthrones.domain.interfaces.LevelApiRepository
 import com.example.gameofthrones.domain.model.House
 import com.example.gameofthrones.presentation.model.HouseModel
 import io.reactivex.android.schedulers.AndroidSchedulers
@@ -12,7 +14,9 @@ import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.schedulers.Schedulers
 
 class Level2VM(
-    private val level1Repository: Level1Repository
+    private val dataBase: DataBase,
+    private val authentication: Authentication,
+    private val levelApiRepository: LevelApiRepository
 ) : ViewModel() {
 
     private val compositeDisposable = CompositeDisposable()
@@ -29,6 +33,9 @@ class Level2VM(
     private val rightAnswerNum: MutableLiveData<Int> by lazy { MutableLiveData<Int>() }
     val rightAnswerNumLD: LiveData<Int> = rightAnswerNum
 
+    private val coins: MutableLiveData<Number> by lazy { MutableLiveData<Number>() }
+    val coinsLD: LiveData<Number> = coins
+
     private fun mapHousesToHousesModel(house: ArrayList<House>): ArrayList<HouseModel> {
         val houseModel = ArrayList<HouseModel>()
         for (houses in house) {
@@ -43,7 +50,7 @@ class Level2VM(
 
     fun allHouses() {
         compositeDisposable.add(
-            level1Repository.getHouses()
+            levelApiRepository.getHouses()
                 .map {
                     mapHousesToHousesModel(it)
                 }
@@ -60,7 +67,7 @@ class Level2VM(
 
     fun getHouseByName(name: String) {
         compositeDisposable.add(
-            level1Repository.houseByName(name)
+            levelApiRepository.houseByName(name)
                 .map {
                     mapHousesToHousesModel(it)
                 }
@@ -77,7 +84,7 @@ class Level2VM(
 
     fun checkAnswer(answer: String, name: String) {
         compositeDisposable.add(
-            level1Repository.houseByName(name)
+            levelApiRepository.houseByName(name)
                 .map {
                     mapHousesToHousesModel(it)
                 }
@@ -94,7 +101,7 @@ class Level2VM(
 
     fun checkAnswerNum(answer: String, name: String) {
         compositeDisposable.add(
-            level1Repository.houseByName(name)
+            levelApiRepository.houseByName(name)
                 .map {
                     mapHousesToHousesModel(it)
                 }
@@ -112,6 +119,26 @@ class Level2VM(
                         Log.e("ERROR11", error.toString())
                     })
         )
+    }
+
+    fun setCoins(
+        collection: String,
+        map: HashMap<String, Number>) {
+        dataBase.setIntData(collection, map, authentication.getEmail())
+    }
+
+    fun setMap(coins: Number): HashMap<String, Number>{
+        var hashMap = HashMap<String, Number>()
+        hashMap.put("coins", coins)
+        return hashMap
+    }
+
+    fun getCoins(){
+        dataBase.data("Coins").document(authentication.getEmail()).get().addOnSuccessListener {
+            if (it.exists()){
+                coins.value = it.data?.getValue("coins") as Number
+            }
+        }
     }
 
     fun getRandomHouse(number: Int, houses: ArrayList<HouseModel>): HouseModel {

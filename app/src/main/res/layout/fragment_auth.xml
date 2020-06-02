@@ -1,8 +1,8 @@
 <androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:tools="http://schemas.android.com/tools"
     android:background="@drawable/img_background_sign"
     android:fitsSystemWindows="true"
     tools:context=".presentation.fragment.AuthFragment">
@@ -30,7 +30,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
-            android:textColorHint="@color/white">
+            android:textColorHint="@color/colorWhite80">
 
             <EditText
                 android:id="@+id/et_name"
@@ -40,14 +40,14 @@
                 android:backgroundTint="#FFFFFF"
                 android:hint="@string/name"
                 android:textColor="@color/colorWhite"
-                android:textColorHint="@color/colorWhite" />
+                android:textColorHint="@color/white" />
         </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/ti_email"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:textColorHint="@color/white">
+            android:textColorHint="@color/colorWhite80">
 
             <EditText
                 android:id="@+id/et_email"
@@ -57,7 +57,7 @@
                 android:backgroundTint="#FFFFFF"
                 android:hint="@string/email"
                 android:inputType="textEmailAddress"
-                android:textColor="@color/colorWhite"
+                android:textColor="@color/white"
                 android:textColorHint="@color/colorWhite" />
         </com.google.android.material.textfield.TextInputLayout>
 
@@ -65,7 +65,7 @@
             android:id="@+id/ti_password"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:textColorHint="@color/white"
+            android:textColorHint="@color/colorWhite80"
             app:passwordToggleEnabled="true">
 
             <EditText

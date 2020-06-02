@@ -1,60 +1,82 @@
 package com.example.gameofthrones.presentation.viewModel.quiz
 
-import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.example.gameofthrones.domain.interfaces.Level3Repository
-import com.example.gameofthrones.domain.model.AryaList
+import com.example.gameofthrones.domain.interfaces.Authentication
+import com.example.gameofthrones.domain.interfaces.DataBase
+import com.example.gameofthrones.domain.interfaces.LevelDBRepository
+import com.example.gameofthrones.domain.model.Quiz
+import javax.inject.Inject
 
-class Level3VM(
-    private val level3Repository: Level3Repository
+class Level3VM @Inject constructor(
+    private val dataBase: DataBase,
+    private val authentication: Authentication,
+    private val levelDBRepository: LevelDBRepository
 ): ViewModel()  {
 
-    private val ariaList: MutableLiveData<ArrayList<AryaList>> by lazy { MutableLiveData<ArrayList<AryaList>>() }
-    val ariaListLD: LiveData<ArrayList<AryaList>> = ariaList
+    private val ariaList: MutableLiveData<ArrayList<Quiz>> by lazy { MutableLiveData<ArrayList<Quiz>>() }
+    val ariaListLD: LiveData<ArrayList<Quiz>> = ariaList
+
+    private val rightAnswer: MutableLiveData<Boolean> by lazy { MutableLiveData<Boolean>() }
+    val rightAnswerLD: LiveData<Boolean> = rightAnswer
 
     private val rightAnswerNum: MutableLiveData<Int> by lazy { MutableLiveData<Int>() }
     val rightAnswerNumLD: LiveData<Int> = rightAnswerNum
 
+    private val coins: MutableLiveData<Number> by lazy { MutableLiveData<Number>() }
+    val coinsLD: LiveData<Number> = coins
+
     fun getData(){
-        var victims = ArrayList<AryaList>()
-        level3Repository.getData("AriaList").addOnSuccessListener {
+        var victims = ArrayList<Quiz>()
+        levelDBRepository.getData("AriaList").addOnSuccessListener {
             for (document in it) {
-                victims.add(AryaList(document.data.getValue("name").toString(),
+                victims.add(Quiz(document.data.getValue("name").toString(),
                     document.data.get("have").toString()))
             }
             ariaList.value = victims
         }
     }
 
-    fun checkAnswers(name: String, answer: String){
-        level3Repository.getDataByField("AriaList", "name", name).addOnSuccessListener {
-            for (document in it) {
-                if(document.data.get("have").toString().equals(answer)){
+    fun checkAnswersNum(name: String, answer: String){
+        dataBase.data("AriaList").document(name).get().addOnSuccessListener {
+            if (it.exists()){
+                if (it.getString("have").toString().equals(answer)){
                     rightAnswerNum.value = 1
-                }
-                else {
+                } else {
                     rightAnswerNum.value = 2
                 }
-                Log.d("victim", document.data.toString())
             }
-
         }
     }
 
-    fun getVictimByName(name: String): AryaList{
-        var victim = AryaList(name, "have")
-        level3Repository.getDataByField("AriaList", "name", name).addOnSuccessListener {
-            for (document in it) {
-                victim = AryaList(document.data.getValue("name").toString(),
-                    document.data.get("have").toString())
-            }
-        }
-        return victim
+    fun setCoins(
+        collection: String,
+        map: HashMap<String, Number>) {
+        dataBase.setIntData(collection, map, authentication.getEmail())
     }
 
-    fun getRandomVictim(number: Int, victims: ArrayList<AryaList>): AryaList {
+    fun setMap(coins: Number): HashMap<String, Number>{
+        var hashMap = HashMap<String, Number>()
+        hashMap.put("coins", coins)
+        return hashMap
+    }
+
+    fun getCoins(){
+        dataBase.data("Coins").document(authentication.getEmail()).get().addOnSuccessListener {
+            if (it.exists()){
+                coins.value = it.data?.getValue("coins") as Number
+            }
+        }
+    }
+
+    fun checkAnswers(name: String, answer: String){
+        dataBase.data("AriaList").document(name).get().addOnSuccessListener {
+            rightAnswer.value = it.getString("have").toString().equals(answer)
+        }
+    }
+
+    fun getRandomVictim(number: Int, victims: ArrayList<Quiz>): Quiz {
         return victims[number]
     }
 }

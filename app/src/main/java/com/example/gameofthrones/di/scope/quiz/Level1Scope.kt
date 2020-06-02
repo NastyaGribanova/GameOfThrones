@@ -1,4 +1,4 @@
-package com.example.gameofthrones.di.scope
+package com.example.gameofthrones.di.scope.quiz
 
 import javax.inject.Scope
 

@@ -1,7 +1,7 @@
-package com.example.gameofthrones.di.component
+package com.example.gameofthrones.di.component.quiz
 
-import com.example.gameofthrones.di.module.Level3Module
-import com.example.gameofthrones.di.scope.Level3Scope
+import com.example.gameofthrones.di.module.quiz.Level3Module
+import com.example.gameofthrones.di.scope.quiz.Level3Scope
 import com.example.gameofthrones.presentation.quiz.Level3Fragment
 import dagger.Subcomponent
 

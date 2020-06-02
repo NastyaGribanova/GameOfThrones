@@ -3,8 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/main_graph"
-    app:startDestination="@id/profileFragment">
-<!--    app:startDestination="@id/authFragment">-->
+    app:startDestination="@id/authFragment">
 
     <fragment
         android:id="@+id/baseFragment"
@@ -23,6 +22,27 @@
         <action
             android:id="@+id/action_quizFragment_to_level3Fragment"
             app:destination="@id/level3Fragment" />
+        <action
+            android:id="@+id/action_quizFragment_to_level4Fragment"
+            app:destination="@id/level4Fragment" />
+        <action
+            android:id="@+id/action_quizFragment_to_level5Fragment"
+            app:destination="@id/level5Fragment" />
+        <action
+            android:id="@+id/action_quizFragment_to_level6Fragment"
+            app:destination="@id/level6Fragment" />
+        <action
+            android:id="@+id/action_quizFragment_to_level7Fragment"
+            app:destination="@id/level7Fragment" />
+        <action
+            android:id="@+id/action_quizFragment_to_level8Fragment"
+            app:destination="@id/level8Fragment" />
+        <action
+            android:id="@+id/action_quizFragment_to_level9Fragment"
+            app:destination="@id/level9Fragment" />
+        <action
+            android:id="@+id/action_quizFragment_to_level510Fragment"
+            app:destination="@id/level510Fragment" />
     </fragment>
     <fragment
         android:id="@+id/profileFragment"
@@ -92,6 +112,83 @@
         android:label="Level3Fragment" >
         <action
             android:id="@+id/action_level3Fragment_to_quizFragment"
+            app:destination="@id/quizFragment" />
+        <action
+            android:id="@+id/action_level3Fragment_to_level4Fragment"
+            app:destination="@id/level4Fragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/level4Fragment"
+        android:name="com.example.gameofthrones.presentation.quiz.Level4Fragment"
+        android:label="Level4Fragment" >
+        <action
+            android:id="@+id/action_level4Fragment_to_quizFragment"
+            app:destination="@id/quizFragment" />
+        <action
+            android:id="@+id/action_level4Fragment_to_level5Fragment"
+            app:destination="@id/level5Fragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/level5Fragment"
+        android:name="com.example.gameofthrones.presentation.quiz.Level5Fragment"
+        android:label="Level5Fragment" >
+        <action
+            android:id="@+id/action_level5Fragment_to_quizFragment"
+            app:destination="@id/quizFragment" />
+        <action
+            android:id="@+id/action_level5Fragment_to_level6Fragment"
+            app:destination="@id/level6Fragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/level6Fragment"
+        android:name="com.example.gameofthrones.presentation.quiz.Level6Fragment"
+        android:label="Level6Fragment" >
+        <action
+            android:id="@+id/action_level6Fragment_to_quizFragment"
+            app:destination="@id/quizFragment" />
+        <action
+            android:id="@+id/action_level6Fragment_to_level7Fragment"
+            app:destination="@id/level7Fragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/level7Fragment"
+        android:name="com.example.gameofthrones.presentation.quiz.Level7Fragment"
+        android:label="Level7Fragment" >
+        <action
+            android:id="@+id/action_level7Fragment_to_quizFragment"
+            app:destination="@id/quizFragment" />
+        <action
+            android:id="@+id/action_level7Fragment_to_level8Fragment"
+            app:destination="@id/level8Fragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/level8Fragment"
+        android:name="com.example.gameofthrones.presentation.quiz.Level8Fragment"
+        android:label="Level8Fragment" >
+        <action
+            android:id="@+id/action_level8Fragment_to_quizFragment"
+            app:destination="@id/quizFragment" />
+        <action
+            android:id="@+id/action_level8Fragment_to_level9Fragment"
+            app:destination="@id/level9Fragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/level9Fragment"
+        android:name="com.example.gameofthrones.presentation.quiz.Level9Fragment"
+        android:label="Level9Fragment" >
+        <action
+            android:id="@+id/action_level9Fragment_to_quizFragment"
+            app:destination="@id/quizFragment" />
+        <action
+            android:id="@+id/action_level9Fragment_to_level510Fragment"
+            app:destination="@id/level510Fragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/level510Fragment"
+        android:name="com.example.gameofthrones.presentation.quiz.Level10Fragment"
+        android:label="Level510Fragment" >
+        <action
+            android:id="@+id/action_level510Fragment_to_quizFragment"
             app:destination="@id/quizFragment" />
     </fragment>
 </navigation>

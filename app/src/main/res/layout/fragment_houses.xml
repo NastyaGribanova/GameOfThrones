@@ -4,8 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".presentation.recycler.house.HousesFragment"
-    android:background="@drawable/img_background_library">
+    android:background="@drawable/img_background_library"
+    tools:context=".presentation.recycler.house.HousesFragment">
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rv_houses"

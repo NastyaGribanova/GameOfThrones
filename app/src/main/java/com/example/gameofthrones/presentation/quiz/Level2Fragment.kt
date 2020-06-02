@@ -22,7 +22,7 @@ import com.example.gameofthrones.presentation.viewModel.quiz.Level2VM
 import javax.inject.Inject
 import kotlin.random.Random
 
-class Level2Fragment: Fragment() {
+class Level2Fragment : Fragment() {
 
     lateinit var dialog: Dialog
     lateinit var dialogEnd: Dialog
@@ -59,7 +59,7 @@ class Level2Fragment: Fragment() {
         initViewModel()
     }
 
-    fun initViewModel(){
+    fun initViewModel() {
         val viewModel by lazy {
             ViewModelProvider(
                 this,
@@ -75,8 +75,10 @@ class Level2Fragment: Fragment() {
         answer2 = requireView().findViewById(R.id.tv_answer2)
         img_answer = requireView().findViewById(R.id.img_answer)
 
-        var progress = intArrayOf(R.id.point1, R.id.point2, R.id.point3, R.id.point4, R.id.point5,
-            R.id.point6, R.id.point7, R.id.point8, R.id.point9, R.id.point10)
+        var progress = intArrayOf(
+            R.id.point1, R.id.point2, R.id.point3, R.id.point4, R.id.point5,
+            R.id.point6, R.id.point7, R.id.point8, R.id.point9, R.id.point10
+        )
 
         anim = AnimationUtils.loadAnimation(context, R.anim.alpha)
         dialog()
@@ -86,14 +88,20 @@ class Level2Fragment: Fragment() {
 
         answersAndQuestion(numAnswer1, numAnswer2, numQuestion)
 
+        model?.getCoins()
+        var coins: Number = 0
+        model?.coinsLD?.observe(viewLifecycleOwner, Observer {
+            coins = it
+        })
+
         answer1.setOnTouchListener(View.OnTouchListener(
-            fun(view: View?, motionEvent: MotionEvent): Boolean{
+            fun(view: View?, motionEvent: MotionEvent): Boolean {
                 when (motionEvent.action) {
                     MotionEvent.ACTION_DOWN -> {
                         answer2.isEnabled = false
                         model?.checkAnswer(answer1.text.toString(), question.text.toString())
                         model?.rightAnswerLD?.observe(viewLifecycleOwner, Observer {
-                            if (it == true){
+                            if (it == true) {
                                 img_answer.setImageDrawable(resources.getDrawable(R.drawable.img_true))
                             } else if (it == false) {
                                 img_answer.setImageDrawable(resources.getDrawable(R.drawable.img_false))
@@ -107,29 +115,31 @@ class Level2Fragment: Fragment() {
                             check = it
                         })
 
-                        if (check==1){
-                            if (rightCount < 10){
+                        if (check == 1) {
+                            if (rightCount < 10) {
                                 rightCount += 1
                             }
-                        } else if (check==2) {
+                        } else if (check == 2) {
                             if (rightCount > 0) {
                                 rightCount -= 1
                             }
                         }
-                        for (i in 0..9){
+                        for (i in 0..9) {
                             var tv: TextView = requireView().findViewById(progress[i])
                             tv.setBackgroundResource(R.drawable.style_points)
                         }
-                        for (i in 0 until rightCount){
+                        for (i in 0 until rightCount) {
                             var tv: TextView = requireView().findViewById(progress[i])
                             tv.setBackgroundResource(R.drawable.style_points_green)
                         }
-                        if (rightCount == 10){
+                        if (rightCount == 10) {
+                            coins = coins.toInt() + 2
+                            model?.setCoins("Coins", model?.setMap(coins)!!)
                             dialogEnd()
                         } else {
                             numAnswer1 = Random.nextInt(1, 10)
                             numAnswer2 = Random.nextInt(1, 10)
-                            numQuestion = Random.nextInt(1,2)
+                            numQuestion = Random.nextInt(1, 2)
                             answersAndQuestion(numAnswer1, numAnswer2, numQuestion)
                             img_answer.startAnimation(anim)
                             answer2.isEnabled = true
@@ -141,15 +151,15 @@ class Level2Fragment: Fragment() {
         ))
 
         answer2.setOnTouchListener(View.OnTouchListener(
-            fun(view: View?, motionEvent: MotionEvent): Boolean{
+            fun(view: View?, motionEvent: MotionEvent): Boolean {
                 when (motionEvent.action) {
                     MotionEvent.ACTION_DOWN -> {
                         answer1.isEnabled = false
                         model?.checkAnswer(answer2.text.toString(), question.text.toString())
                         model?.rightAnswerLD?.observe(viewLifecycleOwner, Observer {
-                            if (it == true){
+                            if (it == true) {
                                 img_answer.setImageDrawable(resources.getDrawable(R.drawable.img_true))
-                            } else if (it == false){
+                            } else if (it == false) {
                                 img_answer.setImageDrawable(resources.getDrawable(R.drawable.img_false))
                             }
                         })
@@ -160,30 +170,32 @@ class Level2Fragment: Fragment() {
                         model?.rightAnswerNumLD?.observe(viewLifecycleOwner, Observer {
                             check = it
                         })
-                        if (check==1){
-                            if (rightCount < 10){
+                        if (check == 1) {
+                            if (rightCount < 10) {
                                 rightCount += 1
                             }
-                        } else if (check==2) {
+                        } else if (check == 2) {
                             if (rightCount > 0) {
                                 rightCount -= 1
                             }
                         }
 
-                        for (i in 0..9){
+                        for (i in 0..9) {
                             var tv: TextView = requireView().findViewById(progress[i])
                             tv.setBackgroundResource(R.drawable.style_points)
                         }
-                        for (i in 0 until rightCount-1){
+                        for (i in 0 until rightCount - 1) {
                             var tv: TextView = requireView().findViewById(progress[i])
                             tv.setBackgroundResource(R.drawable.style_points_green)
                         }
-                        if (rightCount == 10){
+                        if (rightCount == 10) {
+                            coins = coins.toInt() + 2
+                            model?.setCoins("Coins", model?.setMap(coins)!!)
                             dialogEnd()
                         } else {
                             numAnswer1 = Random.nextInt(1, 10)
                             numAnswer2 = Random.nextInt(1, 10)
-                            numQuestion = Random.nextInt(1,2)
+                            numQuestion = Random.nextInt(1, 2)
                             answersAndQuestion(numAnswer1, numAnswer2, numQuestion)
                             img_answer.startAnimation(anim)
                             answer1.isEnabled = true
@@ -195,14 +207,14 @@ class Level2Fragment: Fragment() {
         ))
     }
 
-    fun dialog(){
+    fun dialog() {
         dialog = Dialog(context)
         dialog.run {
             requestWindowFeature(Window.FEATURE_NO_TITLE)
             setContentView(R.layout.dialog_preview)
             window.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
 
-            var textDescription: TextView =dialog.findViewById(R.id.tv_description)
+            var textDescription: TextView = dialog.findViewById(R.id.tv_description)
             textDescription.setText(R.string.level_two)
             setCancelable(false)
         }
@@ -220,16 +232,18 @@ class Level2Fragment: Fragment() {
         dialog.show()
     }
 
-    fun dialogEnd(){
+    fun dialogEnd() {
         dialogEnd = Dialog(context)
         dialogEnd.run {
             requestWindowFeature(Window.FEATURE_NO_TITLE)
             setContentView(R.layout.dialog_end)
             window.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
-            window.setLayout(WindowManager.LayoutParams.MATCH_PARENT,
-                WindowManager.LayoutParams.MATCH_PARENT)
+            window.setLayout(
+                WindowManager.LayoutParams.MATCH_PARENT,
+                WindowManager.LayoutParams.MATCH_PARENT
+            )
 
-            var textDescription: TextView =dialog.findViewById(R.id.tv_description)
+            var textDescription: TextView = dialog.findViewById(R.id.tv_description)
             textDescription.text = R.string.level_two_end.toString()
             setCancelable(false)
         }
@@ -248,34 +262,36 @@ class Level2Fragment: Fragment() {
         dialogEnd.show()
     }
 
-    fun btnBack(){
+    fun btnBack() {
         val btnBack: Button = requireView().findViewById(R.id.btn_back)
         btnBack.setOnClickListener(View.OnClickListener {
             navController.navigate(R.id.action_level2Fragment_to_quizFragment)
         })
     }
 
-    fun level(){
+    fun level() {
         val text_level: TextView = requireView().findViewById(R.id.text_levels)
         text_level.setText(R.string.level2)
     }
 
-    fun setQuestion(questionText: String){
+    fun setQuestion(questionText: String) {
         question.text = questionText
     }
 
-    fun setAnswers(answer1Text: String, answer2Text: String){
+    fun setAnswers(answer1Text: String, answer2Text: String) {
         answer1.text = answer1Text
         answer2.text = answer2Text
     }
 
-    fun answersAndQuestion(numAnswer1Random: Int, numAnswer2Random: Int, numQuestionRandom: Int){
+    fun answersAndQuestion(numAnswer1Random: Int, numAnswer2Random: Int, numQuestionRandom: Int) {
         var numAnswer1Text: Int = numAnswer1Random
         var numAnswer2Text: Int = numAnswer2Random
         model?.housesLD?.observe(viewLifecycleOwner, Observer {
-            val answer1Text: String = model?.getRandomHouse(numAnswer1Text, it)?.coatOfArms.toString()
-            val answer2Text: String = model?.getRandomHouse(numAnswer2Text, it)?.coatOfArms.toString()
-            if ((answer1Text != answer2Text)&&(answer1Text != "")&&(answer2Text != "")){
+            val answer1Text: String =
+                model?.getRandomHouse(numAnswer1Text, it)?.coatOfArms.toString()
+            val answer2Text: String =
+                model?.getRandomHouse(numAnswer2Text, it)?.coatOfArms.toString()
+            if ((answer1Text != answer2Text) && (answer1Text != "") && (answer2Text != "")) {
                 setAnswers(answer1Text, answer2Text)
             } else {
                 numAnswer1Text = Random.nextInt(1, 10)
@@ -284,9 +300,9 @@ class Level2Fragment: Fragment() {
             }
         })
         model?.housesLD?.observe(viewLifecycleOwner, Observer {
-            if (numQuestionRandom == 1){
+            if (numQuestionRandom == 1) {
                 setQuestion(model?.getRandomHouse(numAnswer1Text, it)?.name.toString())
-            } else{
+            } else {
                 setQuestion(model?.getRandomHouse(numAnswer2Text, it)?.name.toString())
             }
         })

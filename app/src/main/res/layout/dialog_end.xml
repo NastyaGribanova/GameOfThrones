@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical"
+    android:id="@+id/dialog"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
-    android:id="@+id/dialog"
     android:layout_gravity="center"
-    android:scaleType="centerCrop"
-    android:layout_margin="10dp">
+    android:layout_margin="10dp"
+    android:orientation="vertical"
+    android:scaleType="centerCrop">
 
     <LinearLayout
         android:layout_width="wrap_content"
@@ -23,7 +23,7 @@
             android:layout_gravity="end"
             android:background="@drawable/btn_stroke_black_white"
             android:gravity="center"
-            android:text="X"
+            android:text="@string/close"
             android:textStyle="bold" />
 
         <TextView

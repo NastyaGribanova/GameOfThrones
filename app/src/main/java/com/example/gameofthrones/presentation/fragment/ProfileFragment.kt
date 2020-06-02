@@ -2,12 +2,14 @@ package com.example.gameofthrones.presentation.fragment
 
 import android.content.Context
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
 import android.widget.TextView
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.NavController
 import androidx.navigation.Navigation
@@ -39,7 +41,7 @@ class ProfileFragment : Fragment() {
         initViewModel()
     }
 
-    fun initViewModel(){
+    fun initViewModel() {
         val viewModel by lazy {
             ViewModelProvider(
                 this,
@@ -50,36 +52,28 @@ class ProfileFragment : Fragment() {
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
 
         activity?.findViewById<BottomNavigationView>(R.id.btv_main)?.visibility = View.VISIBLE
-        getData()
-        getInterests()
         logout()
+
+        val email: TextView = requireView().findViewById(R.id.tv_email)
+        email.text = model?.getEmail()
+        val name: TextView = requireView().findViewById(R.id.tv_name_profile)
+
+        model?.getName("User", email.text.toString())
+        model?.nameLD?.observe(viewLifecycleOwner, Observer {
+            name.text = it
+        })
+
+        Log.d("nameText", name.text.toString())
     }
 
-    fun logout(){
+    fun logout() {
         val btnCont: Button = requireView().findViewById(R.id.btn_logout)
         btnCont.setOnClickListener(View.OnClickListener {
             model?.signOut()
             navController.navigate(R.id.action_profileFragment_to_authFragment)
         })
-    }
-
-    fun getData(){
-        val name: TextView = requireView().findViewById(R.id.tv_name)
-        name.text = model?.getName("Users", model?.getEmail()!!)
-        val email: TextView = requireView().findViewById(R.id.tv_email)
-        email.text = model?.getEmail()
-    }
-
-    fun getInterests(){
-        val favBook: TextView = requireView().findViewById(R.id.tv_fav_book)
-
-        val favChar: TextView = requireView().findViewById(R.id.tv_fav_char)
-
-        val favSeason: TextView = requireView().findViewById(R.id.tv_fav_season)
-
     }
 
     companion object {

@@ -2,14 +2,14 @@ package com.example.gameofthrones.data.repository
 
 import com.example.gameofthrones.data.api.HouseApiService
 import com.example.gameofthrones.data.mapper.mapHouses
-import com.example.gameofthrones.domain.interfaces.Level1Repository
+import com.example.gameofthrones.domain.interfaces.LevelApiRepository
 import com.example.gameofthrones.domain.model.House
 import io.reactivex.Single
 import javax.inject.Inject
 
-class Level1RepositoryImpl @Inject constructor(
+class LevelApiRepositoryImpl @Inject constructor(
     private var apiService: HouseApiService
-): Level1Repository {
+): LevelApiRepository {
 
     override fun getHouses(): Single<ArrayList<House>> {
         return apiService.getAllHouses()

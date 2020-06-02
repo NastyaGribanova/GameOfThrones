@@ -47,20 +47,35 @@ class AuthFragment : Fragment() {
 
         activity?.findViewById<BottomNavigationView>(R.id.btv_main)?.visibility = View.GONE
 
-        if (model?.isAuth() ?: false) {
+        if (model?.isAuth() == true) {
             navController.navigate(R.id.action_authFragment_to_profileFragment)
-        } else Log.d("IsAuth", "false")
+        }
 
         btn_register.setOnClickListener() { x ->
+            model?.setName(
+                "User",
+                model?.setMapString(et_name.text.toString(), "name")!!,
+                et_email.text.toString()
+            )
+            model?.setCoins(model?.setMapInt(0, "coins")!!, et_email.text.toString())
             if ((!et_email.text.toString().isEmpty()) && (!et_password.text.toString().isEmpty())) {
-                if (model?.createAccount(et_email.text.toString(), et_password.text.toString(), view)!!
+                if (model?.createAccount(
+                        et_email.text.toString(),
+                        et_password.text.toString(),
+                        view
+                    )!!
                 ) {
-                    model?.setName("User", model?.setMap(et_name.text.toString())!!, et_email.text.toString())
                     navController.navigate(R.id.action_authFragment_to_profileFragment)
                 }
             }
         }
         btn_auth.setOnClickListener() { x ->
+            model?.setName(
+                "User",
+                model?.setMapString(et_name.text.toString(), "name")!!,
+                et_email.text.toString()
+            )
+            Log.d("name", et_name.text.toString())
             if ((!et_email.text.toString().isEmpty()) && (!et_password.text.toString().isEmpty())) {
                 if (model?.checkSignIn(
                         et_email.text.toString(),
@@ -68,7 +83,6 @@ class AuthFragment : Fragment() {
                         view
                     )!!
                 ) {
-                    model?.setName("User", model?.setMap(et_name.text.toString())!!, et_email.text.toString())
                     Navigation.findNavController(view)
                         .navigate(R.id.action_authFragment_to_profileFragment)
                 }

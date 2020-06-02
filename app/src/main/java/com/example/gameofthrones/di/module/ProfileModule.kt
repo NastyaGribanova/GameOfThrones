@@ -6,6 +6,7 @@ import com.example.gameofthrones.di.ViewModelKey
 import com.example.gameofthrones.di.scope.ProfileScope
 import com.example.gameofthrones.domain.interfaces.Authentication
 import com.example.gameofthrones.presentation.viewModel.ProfileVM
+import com.google.firebase.firestore.FirebaseFirestore
 import dagger.Module
 import dagger.Provides
 import dagger.multibindings.IntoMap
@@ -22,8 +23,12 @@ class ProfileModule {
     @Provides
     @IntoMap
     @ViewModelKey(ProfileVM::class)
-    fun provideProfileViewModel(authentication: AuthenticationImpl): ViewModel {
+    fun provideProfileViewModel(
+        firebaseFirestore: FirebaseFirestore,
+        authentication: AuthenticationImpl
+    ): ViewModel {
         return ProfileVM(
+            firebaseFirestore,
             authentication
         )
     }

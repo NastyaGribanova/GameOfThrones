@@ -19,11 +19,11 @@ class MainActivity : AppCompatActivity() {
         navController = Navigation.findNavController(this, R.id.nav_host_fragment)
 
         val onNavigationItemSelectedListener =
-            BottomNavigationView.OnNavigationItemSelectedListener {item ->
+            BottomNavigationView.OnNavigationItemSelectedListener { item ->
                 when (item.itemId) {
                     R.id.base -> {
                         navController.navigate(R.id.baseFragment)
-                       true
+                        true
                     }
                     R.id.quiz -> {
                         navController.navigate(R.id.quizFragment)
@@ -61,5 +61,9 @@ class MainActivity : AppCompatActivity() {
 
     fun level3(view: View) {
         navController.navigate(R.id.action_quizFragment_to_level3Fragment)
+    }
+
+    fun level4(view: View) {
+        navController.navigate(R.id.action_quizFragment_to_level4Fragment)
     }
 }
