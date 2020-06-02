@@ -79,7 +79,7 @@ class BaseFragment : Fragment() {
                 back.setBackgroundResource(R.drawable.img_base4)
                 coins.setTextColor(resources.getColor(R.color.white))
             }
-            if (it.toString().toInt() in 16..20) {
+            if (it.toString().toInt() >= 17) {
                 back.setBackgroundResource(R.drawable.img_base5)
                 coins.setTextColor(resources.getColor(R.color.white))
             }

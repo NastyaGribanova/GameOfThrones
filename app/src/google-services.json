@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "792695740822",
+    "firebase_url": "https://gameofthrones-4cfa6.firebaseio.com",
+    "project_id": "gameofthrones-4cfa6",
+    "storage_bucket": "gameofthrones-4cfa6.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:792695740822:android:d8b29e372162914da1e5b7",
+        "android_client_info": {
+          "package_name": "com.example.gameofthrones"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "792695740822-1aq6ilsq9ubpcqba3fnnuemtq00brsov.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyArm2u8M0_mAouaVjpARnbB1sPbK45h27o"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "792695740822-1aq6ilsq9ubpcqba3fnnuemtq00brsov.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

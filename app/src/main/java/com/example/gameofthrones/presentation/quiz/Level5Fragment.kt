@@ -34,8 +34,8 @@ class Level5Fragment : Fragment() {
 
     private var model: Level5VM? = null
 
-    private var numAnswer1: Int = Random.nextInt(1, 8)
-    private var numAnswer2: Int = Random.nextInt(1, 8)
+    private var numAnswer1: Int = Random.nextInt(1, 7)
+    private var numAnswer2: Int = Random.nextInt(1, 7)
     private var numQuestion: Int = Random.nextInt(1, 3)
 
     lateinit var anim: Animation
@@ -145,8 +145,8 @@ class Level5Fragment : Fragment() {
                             model?.setCoins("Coins", model?.setMap(coins)!!)
                             dialogEnd()
                         } else {
-                            numAnswer1 = Random.nextInt(1, 10)
-                            numAnswer2 = Random.nextInt(1, 10)
+                            numAnswer1 = Random.nextInt(1, 7)
+                            numAnswer2 = Random.nextInt(1, 7)
                             numQuestion = Random.nextInt(1, 2)
                             answersAndQuestion(numAnswer1, numAnswer2, numQuestion)
                             img_answer.startAnimation(anim)
@@ -204,8 +204,8 @@ class Level5Fragment : Fragment() {
                             model?.setCoins("Coins", model?.setMap(coins)!!)
                             dialogEnd()
                         } else {
-                            numAnswer1 = Random.nextInt(1, 10)
-                            numAnswer2 = Random.nextInt(1, 10)
+                            numAnswer1 = Random.nextInt(1, 7)
+                            numAnswer2 = Random.nextInt(1, 7)
                             numQuestion = Random.nextInt(1, 2)
                             answersAndQuestion(numAnswer1, numAnswer2, numQuestion)
                             img_answer.startAnimation(anim)
@@ -305,8 +305,8 @@ class Level5Fragment : Fragment() {
             if ((answer1Text != answer2Text) && (answer1Text != "") && (answer2Text != "")) {
                 setAnswers(answer1Text, answer2Text)
             } else {
-                numAnswer1Text = Random.nextInt(1, 8)
-                numAnswer2Text = Random.nextInt(1, 8)
+                numAnswer1Text = Random.nextInt(1, 7)
+                numAnswer2Text = Random.nextInt(1, 7)
                 answersAndQuestion(numAnswer1Text, numAnswer2Text, numQuestionRandom)
             }
         })

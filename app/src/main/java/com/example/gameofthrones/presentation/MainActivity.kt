@@ -66,4 +66,28 @@ class MainActivity : AppCompatActivity() {
     fun level4(view: View) {
         navController.navigate(R.id.action_quizFragment_to_level4Fragment)
     }
+
+    fun level5(view: View) {
+        navController.navigate(R.id.action_quizFragment_to_level5Fragment)
+    }
+
+    fun level6(view: View) {
+        navController.navigate(R.id.action_quizFragment_to_level6Fragment)
+    }
+
+    fun level7(view: View) {
+        navController.navigate(R.id.action_quizFragment_to_level7Fragment)
+    }
+
+    fun level8(view: View) {
+        navController.navigate(R.id.action_quizFragment_to_level7Fragment)
+    }
+
+    fun level9(view: View) {
+        navController.navigate(R.id.action_quizFragment_to_level7Fragment)
+    }
+
+    fun level10(view: View) {
+        navController.navigate(R.id.action_quizFragment_to_level7Fragment)
+    }
 }
